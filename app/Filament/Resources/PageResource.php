@@ -21,6 +21,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class PageResource extends Resource
 {
@@ -31,8 +32,15 @@ class PageResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            TextInput::make('title')->required(),
-            TextInput::make('slug')->unique(ignoreRecord: true)->required(),
+            TextInput::make('title')->required()
+                ->live(onBlur: true)
+                ->afterStateUpdated(function ($operation, $state, $set){
+                    if ($operation === 'edit'){
+                        return;
+                    }
+                    $set('slug', Str::slug($state));
+                }),
+            TextInput::make('slug')->unique(ignoreRecord: true)->required()->minLength(1)->maxLength(255),
             Select::make('lang_locale')
                 ->options(Language::where('active', 1)->pluck('name', 'locale'))
                 ->required(),
@@ -48,7 +56,6 @@ class PageResource extends Resource
     
             Toggle::make('active')->label('Aktivní stránka'),
     
-            // Dynamické načítání polí podle vybrané šablony
             Forms\Components\Section::make('Obsah stránky')
                 ->schema(fn($get) => match ($get('type')) {
                     PageTypesHelper::HOMEPAGE => HomepagePageType::getSchema(),

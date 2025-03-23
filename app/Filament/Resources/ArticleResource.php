@@ -28,13 +28,20 @@ class ArticleResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->required(),
-                TextInput::make('slug')->unique(ignoreRecord: true)->required(), // TODO: Add slug generation
+                TextInput::make('title')->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function ($operation, $state, $set){
+                        if ($operation === 'edit'){
+                            return;
+                        }
+                        $set('slug', Str::slug($state));
+                    }),
+                TextInput::make('slug')->unique(ignoreRecord: true)->required()->minLength(1)->maxLength(255),
                 Select::make('lang_locale')
                     ->options(Language::where('active', 1)->pluck('name', 'locale'))
                     ->required(),
                 Select::make('user_id')
-                    ->default(auth()->id()) // Nastaví přihlášeného uživatele jako výchozí
+                    ->default(auth()->id())
                     ->options(User::all()->pluck('name', 'id'))
                     ->nullable()
                     ->label('Uživatel'),
