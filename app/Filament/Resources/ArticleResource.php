@@ -12,11 +12,13 @@ use Filament\Forms\Form;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ArticleResource extends Resource
 {
@@ -45,6 +47,8 @@ class ArticleResource extends Resource
                     ->options(User::all()->pluck('name', 'id'))
                     ->nullable()
                     ->label('Uživatel'),
+
+                Toggle::make('active')->label('Aktivní stránka'),
             ]);
     }
 

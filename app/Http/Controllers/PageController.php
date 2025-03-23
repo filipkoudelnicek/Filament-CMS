@@ -10,11 +10,9 @@ class PageController extends Controller
 {
     public function show(string $slug = '/'): View
     {
-        $page = Page::where('slug', $slug)->first();
-
-        if (!$page) {
-            abort(404);
-        }
+        $page = Page::where('slug', $slug)
+            ->where('active', 1)
+            ->firstOrFail();
 
         return view("pages.{$page->type}", ['page' => $page]);
     }

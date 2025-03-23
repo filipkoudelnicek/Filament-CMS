@@ -9,7 +9,9 @@ class ArticleController extends Controller
 {
     public function showArticle($articleSlug)
     {
-        $article = Article::where('slug', $articleSlug)->firstOrFail();
+        $article = Article::where('slug', $articleSlug)
+            ->where('active', 1)
+            ->firstOrFail();
         
         return view('pages.article-detail', compact('article'));
     }
