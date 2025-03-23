@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use App\Filament\Resources\ArticleResource\Pages;
+use App\Filament\Resources\ArticleResource\RelationManagers;
+use App\Models\Article;
+use App\Models\Language;
+use App\Models\User;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+class ArticleResource extends Resource
+{
+    protected static ?string $model = Article::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('title')->required(),
+                TextInput::make('slug')->unique(ignoreRecord: true)->required(), // TODO: Add slug generation
+                Select::make('lang_locale')
+                    ->options(Language::where('active', 1)->pluck('name', 'locale'))
+                    ->required(),
+                Select::make('user_id')
+                    ->default(auth()->id()) // Nastaví přihlášeného uživatele jako výchozí
+                    ->options(User::all()->pluck('name', 'id'))
+                    ->nullable()
+                    ->label('Uživatel'),
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('title')->sortable(),
+                TextColumn::make('slug')->sortable(),
+                TextColumn::make('lang_locale')->label('Jazyk'),
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListArticles::route('/'),
+            'create' => Pages\CreateArticle::route('/create'),
+            'edit' => Pages\EditArticle::route('/{record}/edit'),
+        ];
+    }
+}
