@@ -1,0 +1,1 @@
+<h1>Tohle je detail článku</h1>

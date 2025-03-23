@@ -1,0 +1,1 @@
+<h1>Tohle je blog stránka</h1>

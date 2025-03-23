@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Helpers;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ArticleController;
 
 class PageTypesHelper
 {
@@ -17,4 +19,14 @@ class PageTypesHelper
         ];
     }
 
+    public static function getControllerForPageType($pageType)
+    {
+        $controllers = [
+            self::HOMEPAGE => PageController::class,
+            self::TEXT => PageController::class,
+            self::BLOG => ArticleController::class,
+        ];
+
+        return $controllers[$pageType] ?? null;
+    }
 }
