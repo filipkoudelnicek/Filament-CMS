@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
+use App\Filament\Modules\SeoModule;
 use App\Models\Article;
 use App\Models\Language;
 use App\Models\User;
@@ -49,6 +50,8 @@ class ArticleResource extends Resource
                     ->label('Uživatel'),
 
                 Toggle::make('active')->label('Aktivní stránka'),
+
+                ...SeoModule::make(),
             ]);
     }
 

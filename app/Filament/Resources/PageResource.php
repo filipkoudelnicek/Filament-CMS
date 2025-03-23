@@ -6,6 +6,7 @@ use App\Helpers\PageTypesHelper;
 use App\Filament\Modules\PageTypes\HomepagePageType;
 use App\Filament\Modules\PageTypes\TextPageType;
 use App\Filament\Modules\PageTypes\BlogPageType;
+use App\Filament\Modules\SeoModule;
 use App\Models\Language;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -64,6 +65,8 @@ class PageResource extends Resource
                     default => [],
                 })
                 ->key('pageTypes'),
+
+            ...SeoModule::make(),
         ]);
     }
 

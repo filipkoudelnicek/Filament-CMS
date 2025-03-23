@@ -1,12 +1,7 @@
 @extends('layouts.app')
 @section('title', $page->title)
-
-@section('styles')
-@endsection
+@section('seo')<x-seo-module :seo="$page->content['seo'] ?? []" />@endsection
 
 @section('content')
-    <h1>Tohle je test</h1>
-@endsection
-
-@section('scripts')
+    @isset($page->content['title'])<h1>{{ $page->content['title'] }}</h1>@endisset
 @endsection

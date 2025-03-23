@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
     @vite('resources/css/app.css')
 
+    @yield('seo')
+
     <title>@yield('title')</title>
     
-    @yield('styles')
 </head>
 
 <body>
-    <x-header-menu />
+    <x-header.header-menu />
 
     @yield('content')
 
-    @yield('scripts')
-    @vite('resources/js/app.js')
-
     <x-footer.footer />
+    
+    @vite('resources/js/app.js')
     <script src="/assets/js/script.js"></script>
 </body>
 </html>
