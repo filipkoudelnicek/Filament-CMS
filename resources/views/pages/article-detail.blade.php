@@ -4,4 +4,7 @@
 
 @section('content')
     <h1>Tohle je detail článku</h1>
+    @isset($article->content['image'])
+        <x-curator-glider :media="$article->content['image']"/>
+    @endisset
 @endsection

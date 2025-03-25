@@ -14,6 +14,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Toggle;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -50,6 +51,8 @@ class ArticleResource extends Resource
                     ->label('Uživatel'),
 
                 Toggle::make('active')->label('Aktivní stránka'),
+
+                CuratorPicker::make('content.image')->label('Obrázek'),
 
                 ...SeoModule::make(),
             ]);
