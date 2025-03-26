@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "awcodes/filament-curator": "^3.7",
+        "bezhansalleh/filament-shield": "^3.3",
         "filament/actions": "^3.3",
         "filament/filament": "^3.3",
         "filament/forms": "^3.3",

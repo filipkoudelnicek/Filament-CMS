@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Awcodes\Curator\CuratorPlugin;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -56,7 +57,8 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugins([
-                CuratorPlugin::make()
+                CuratorPlugin::make(),
+                FilamentShieldPlugin::make(),
             ])
             ->viteTheme('resources/css/filament/admin/theme.css');
     }
