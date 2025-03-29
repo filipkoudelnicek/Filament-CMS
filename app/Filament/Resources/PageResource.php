@@ -23,6 +23,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Unique;
 
 class PageResource extends Resource
 {
@@ -41,7 +42,12 @@ class PageResource extends Resource
                     }
                     $set('slug', Str::slug($state));
                 }),
-            TextInput::make('slug')->unique(ignoreRecord: true)->required()->minLength(1)->maxLength(255),
+            TextInput::make('slug')->required()->minLength(1)->maxLength(255)
+            ->unique(ignoreRecord: true,  modifyRuleUsing: function (Unique $rule, callable $get) {
+                return $rule
+                    ->where('lang_locale', $get('lang_locale'))
+                    ->where('slug', $get('slug'));
+            }),
             Select::make('lang_locale')
                 ->options(Language::where('active', 1)->pluck('name', 'locale'))
                 ->required(),

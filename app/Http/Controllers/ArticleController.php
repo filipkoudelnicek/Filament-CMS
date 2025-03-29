@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function showArticle($articleSlug)
+    protected $defaultLocale = 'cs';
+
+    public function showArticle(Request $request, $articleSlug)
     {
+        $locale = $request->route('locale') ?? $this->defaultLocale;
+        
         $article = Article::where('slug', $articleSlug)
+            ->where('lang_locale', $locale)
             ->where('active', 1)
             ->firstOrFail();
         
