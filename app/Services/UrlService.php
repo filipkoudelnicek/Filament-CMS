@@ -11,6 +11,50 @@ use Spatie\Sitemap\Tags\Url;
 class UrlService
 {
     protected static $defaultLocale = 'cs';
+    protected static $skipSlugs = ['admin', 'livewire'];
+    
+    /**
+     * Získání slugu z URL
+     */
+    public static function getSlugFromUrl(string $url, bool $getLastPart = false): ?string
+    {
+        if ($url === '/') {
+            return $url;
+        }
+
+        if ($url === '/' . self::$defaultLocale) {
+            return '/';
+        }
+
+        $urlArr = explode('/', ltrim($url, '/'));
+        $mainSlug = $url;
+
+        if (isset($urlArr[0])) {
+            $mainSlug = $urlArr[0];
+            
+            $locales = self::getLocales();
+            if (in_array($mainSlug, $locales)) {
+                if (isset($urlArr[1])) {
+                    $mainSlug = $urlArr[1];
+                } else {
+                    return '/';
+                }
+            }
+        }
+
+        if (in_array($mainSlug, self::$skipSlugs)) {
+            return null;
+        }
+
+        if ($getLastPart) {
+            $mainSlug = $urlArr[count($urlArr) - 1];
+            $slugArr = explode('?', $mainSlug);
+            $mainSlug = $slugArr[0];
+        }
+
+        $mainSlug = explode('?', $mainSlug);
+        return $mainSlug[0];
+    }
 
     /**
      * Získá seznam aktivních jazyků

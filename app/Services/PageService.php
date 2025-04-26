@@ -7,6 +7,37 @@ use App\Models\Page;
 class PageService
 {
     /**
+     * Najde stejnou stránku v jiném jazyce
+     */
+    public static function getSamePageInDiffLang(string $currentUrl, string $targetLocale): ?Page
+    {
+        $slug = UrlService::getSlugFromUrl($currentUrl);
+        
+        if (!$slug) {
+            return self::getHomepageForLocale($targetLocale);
+        }
+        
+        if ($slug === '/') {
+            return self::getHomepageForLocale($targetLocale);
+        }
+        
+        $currentPage = Page::where('slug', $slug)
+            ->where('active', true)
+            ->first();
+            
+        if (!$currentPage) {
+            return self::getHomepageForLocale($targetLocale);
+        }
+        
+        $targetPage = Page::where('type', $currentPage->type)
+            ->where('lang_locale', $targetLocale)
+            ->where('active', true)
+            ->first();
+            
+        return $targetPage ?? self::getHomepageForLocale($targetLocale);
+    }
+    
+    /**
      * Získá slug pro blog stránku v daném jazyce
      */
     public static function getBlogSlug(string $locale = null): string
