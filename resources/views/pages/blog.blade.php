@@ -3,5 +3,7 @@
 @section('seo')<x-seo-module :seo="$page->content['seo'] ?? []" />@endsection
 
 @section('content')
-    <h1>Tohle je blog stránka</h1>
+    <x-header.page-header :title="$page->title" />
+
+    
 @endsection

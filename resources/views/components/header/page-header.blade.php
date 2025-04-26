@@ -1,0 +1,12 @@
+<div class="breadcrumb-area bg_image tmp-section-gap breadcrumb-bg" @if($background) style="background-image: url('{{ $background }}')"@endif>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner text-center">
+                    @isset($title)<h1 class="title split-collab">{{$title}}</h1>@endisset
+                    <div class="circle-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
