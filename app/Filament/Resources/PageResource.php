@@ -10,6 +10,8 @@ use App\Filament\Modules\SeoModule;
 use App\Models\Language;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Checkbox;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Toggle;
 use App\Filament\Resources\PageResource\Pages;
@@ -62,8 +64,13 @@ class PageResource extends Resource
                 })->disabledOn('edit'),
     
             Toggle::make('active')->label('Aktivní stránka'),
+
+            Checkbox::make('in_menu')->default(0)->label('Zobrazit v hl. menu'),
+            TextInput::make('in_menu_title')->default('')->label('Název v menu'),
+            TextInput::make('in_menu_order')->default(0)->numeric()->label('Pořadí v menu'),
+
     
-            Forms\Components\Section::make('Obsah stránky')
+            Section::make('Obsah stránky')
                 ->schema(fn($get) => match ($get('type')) {
                     PageTypesHelper::HOMEPAGE => HomepagePageType::getSchema(),
                     PageTypesHelper::TEXT => TextPageType::getSchema(),
