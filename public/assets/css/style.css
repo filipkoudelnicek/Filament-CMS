@@ -20965,3 +20965,8 @@ body.loaded {
   background-image: none !important;
 }
 /*# sourceMappingURL=../maps/style.css.map */
+
+.tmp-pagination-area-next-pev .active{
+  background: var(--color-primary);
+  color: #fff;
+}

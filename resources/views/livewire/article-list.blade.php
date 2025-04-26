@@ -32,7 +32,7 @@
         </div>
 
         <div class="tmp-pagination-area-next-pev mt--50">
-            {{ $articles->links() }}
+            {{ $articles->links('vendor.pagination.bootstrap-5') }}
         </div>
     </div>
 </div>
