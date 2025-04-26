@@ -11,6 +11,7 @@ use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Toggle;
@@ -51,6 +52,8 @@ class ArticleResource extends Resource
                     ->label('Uživatel'),
 
                 Toggle::make('active')->label('Aktivní stránka'),
+
+                DateTimePicker::make('publish_time'),
 
                 CuratorPicker::make('content.image')->label('Obrázek'),
 

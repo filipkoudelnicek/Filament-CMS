@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Article;
+use App\Services\LanguageService;
+use Illuminate\Support\Carbon;
 
 class ArticleService
 {
@@ -51,5 +53,22 @@ class ArticleService
         }
         
         return $query->limit($limit)->get();
+    }
+    
+    /**
+     * Získá aktivní články pro aktuální jazyk se stránkováním
+     */
+    public static function getPaginatedActiveArticlesInCurrentLanguage(int $perPage = 6)
+    {
+        $currentLanguage = LanguageService::getCurrentLanguage();
+        
+        return Article::where('active', true)
+                    ->where('lang_locale', $currentLanguage->locale)
+                    ->where(function ($query) {
+                        $query->whereNull('publish_time')
+                            ->orWhere('publish_time', '<=', Carbon::now());
+                    })
+                    ->latest()
+                    ->paginate($perPage);
     }
 }

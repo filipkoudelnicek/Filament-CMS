@@ -4,6 +4,5 @@
 
 @section('content')
     <x-header.page-header :title="$page->title" />
-
-    
+    <livewire:article-list />
 @endsection

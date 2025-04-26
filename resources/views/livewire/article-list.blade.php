@@ -1,0 +1,38 @@
+<div class="altest-blog-area tmp-section-gap">
+    <div class="container">
+        <div class="row g-5">
+            @foreach($articles as $article)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="single-blog blog-style-three">
+                        <div class="blog-inner">
+                            <div class="thumbnail">
+                                <a href="{{ $this->getArticleUrl($article) }}">
+                                    <x-curator-glider :media="$article->content['image']"/>
+                                </a>
+                            </div>
+                            <div class="blog-content text-center">
+                                <div class="blog-head">
+                                    <span class="name">{{ $article->publish_time?->format('j.n.Y') }}</span>
+                                    <span class="designation">{{ $article->category->name ?? 'Nezařazeno' }}</span>
+                                </div>
+                                <div class="blog-body">
+                                    <a href="{{ $this->getArticleUrl($article) }}" class="title-area">
+                                        <h4 class="title">{{ $article->title }}</h4>
+                                    </a>
+                                    <a class="btn-read-more" href="{{ $this->getArticleUrl($article) }}">
+                                        <span class="read-more-text">Read More</span>
+                                        <span class="read-more-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="tmp-pagination-area-next-pev mt--50">
+            {{ $articles->links() }}
+        </div>
+    </div>
+</div>

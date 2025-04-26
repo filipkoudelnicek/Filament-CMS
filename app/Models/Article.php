@@ -8,6 +8,7 @@ class Article extends Model
 {
     protected $casts = [
         'content' => 'array',
+        'publish_time' => 'datetime',
     ];
 
     protected $fillable = [
