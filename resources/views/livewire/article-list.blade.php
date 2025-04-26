@@ -7,7 +7,9 @@
                         <div class="blog-inner">
                             <div class="thumbnail">
                                 <a href="{{ $this->getArticleUrl($article) }}">
-                                    <x-curator-glider :media="$article->content['image']"/>
+                                    @isset($article->content['thumbnail'])
+                                        <x-curator-glider :media="$article->content['thumbnail']"/>
+                                    @endisset
                                 </a>
                             </div>
                             <div class="blog-content text-center">

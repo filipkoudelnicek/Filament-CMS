@@ -11,9 +11,14 @@ use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Forms\Components\Toggle;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Resources\Resource;
@@ -31,34 +36,59 @@ class ArticleResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                TextInput::make('title')->required()
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(function ($operation, $state, $set){
-                        if ($operation === 'edit'){
-                            return;
-                        }
-                        $set('slug', Str::slug($state));
-                    }),
-                TextInput::make('slug')->unique(ignoreRecord: true)->required()->minLength(1)->maxLength(255),
-                Select::make('lang_locale')
-                    ->options(Language::where('active', 1)->pluck('name', 'locale'))
-                    ->required(),
-                Select::make('user_id')
-                    ->default(auth()->id())
-                    ->options(User::all()->pluck('name', 'id'))
-                    ->nullable()
-                    ->label('Uživatel'),
+        return $form->schema([
+            Fieldset::make('Nastavení stránky')
+                ->schema([
+                    Grid::make(2)
+                        ->schema([
+                            TextInput::make('title')
+                                ->required()
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(function ($operation, $state, $set) {
+                                    if ($operation === 'edit') {
+                                        return;
+                                    }
+                                    $set('slug', \Illuminate\Support\Str::slug($state));
+                                }),
+                            TextInput::make('slug')
+                                ->unique(ignoreRecord: true)
+                                ->required()
+                                ->minLength(1)
+                                ->maxLength(255),
+                        ]),
+                    
+                    Grid::make(2)
+                        ->schema([
+                            Select::make('lang_locale')
+                                ->options(\App\Models\Language::where('active', 1)->pluck('name', 'locale'))
+                                ->required(),
+                            Select::make('user_id')
+                                ->default(auth()->id())
+                                ->options(\App\Models\User::all()->pluck('name', 'id'))
+                                ->nullable()
+                                ->label('Uživatel'),
+                        ]),
+                    
+                    Grid::make(2)
+                        ->schema([
+                            Toggle::make('active')
+                                ->label('Aktivní článek'),
+                            DateTimePicker::make('publish_time'),
+                        ]),
+                ]),
 
-                Toggle::make('active')->label('Aktivní stránka'),
-
-                DateTimePicker::make('publish_time'),
-
-                CuratorPicker::make('content.image')->label('Obrázek'),
-
-                ...SeoModule::make(),
-            ]);
+            Forms\Components\Fieldset::make('Obsah')
+                ->schema([
+                    Forms\Components\Section::make()
+                    ->schema([
+                        CuratorPicker::make('content.banner')->label('Banner'),
+                        CuratorPicker::make('content.thumbnail')->label('Thumbnail'),
+                        RichEditor::make('content.body')->label('Obsah')->columnSpanFull(),
+                    ])->columns(2),
+                ]),
+        
+            ...SeoModule::make(),
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -68,6 +98,7 @@ class ArticleResource extends Resource
                 TextColumn::make('title')->sortable(),
                 TextColumn::make('slug')->sortable(),
                 TextColumn::make('lang_locale')->label('Jazyk'),
+                ToggleColumn::make('active')->label('Aktivní'),
             ])
             ->filters([
                 //

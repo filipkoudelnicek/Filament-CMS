@@ -20970,3 +20970,8 @@ body.loaded {
   background: var(--color-primary);
   color: #fff;
 }
+
+.tmp-service-section.tmp-section-gap.article-detail ul li{
+  list-style: unset;
+  list-style-position: inside;
+}

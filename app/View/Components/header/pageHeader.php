@@ -11,13 +11,17 @@ class PageHeader extends Component
 {
     public string $title;
     public ?string $background = null;
+    public ?string $author = null;
+    public ?string $publishedAt = null;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $title, $background = null)
+    public function __construct(string $title, $background = null, $author = null, $publishedAt = null)
     {
         $this->title = $title;
+        $this->author = $author;
+        $this->publishedAt = $publishedAt;
 
         if ($background) {
             $media = Media::find($background);

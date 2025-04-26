@@ -4,6 +4,11 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-inner text-center">
                     @isset($title)<h1 class="title split-collab">{{$title}}</h1>@endisset
+                    @if (!empty($author) && !empty($publishedAt))
+                        <ul class="page-list">
+                            <li>{{$publishedAt}} / {{$author}}</li>
+                        </ul>
+                    @endif
                     <div class="circle-1"></div>
                 </div>
             </div>
