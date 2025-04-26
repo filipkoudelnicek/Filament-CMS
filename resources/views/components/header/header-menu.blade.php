@@ -13,26 +13,13 @@
                         <div class="header-nav main-nav-one">
                             <nav>
                                 <ul class="parent-nav">
-                                    <li>
-                                        <a class="nav-link" href="index.html">
-                                            <span class="rolling-text">HOME</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="about.html">
-                                            <span class="rolling-text">ABOUT</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="blog.html">
-                                            <span class="rolling-text">BLOG</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="contact.html">
-                                            <span class="rolling-text">CONTACT</span>
-                                        </a>
-                                    </li>
+                                    @foreach($menuPages as $page)
+                                        <li>
+                                            <a class="nav-link" href="{{ $getPageUrl($page) }}">
+                                                <span class="rolling-text">{{ $page->in_menu_title ?? $page->title }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </nav>
                         </div>
