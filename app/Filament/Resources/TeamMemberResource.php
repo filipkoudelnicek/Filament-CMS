@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use App\Filament\Resources\TeamMemberResource\Pages;
+use App\Filament\Resources\TeamMemberResource\RelationManagers;
+use App\Models\TeamMember;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\TextInput;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+class TeamMemberResource extends Resource
+{
+    protected static ?string $model = TeamMember::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function form(Form $form): Form
+    {
+        return $form->schema([
+            TextInput::make('name')->label('Jméno')->required(),
+            TextInput::make('position')->label('Pozice')->required(),
+            CuratorPicker::make('content.photo')->label('Fotka')->required(),
+            TextInput::make('content.facebook')->label('Facebook'),
+            TextInput::make('content.linkedin')->label('LinkedIn'),
+            TextInput::make('content.twitter')->label('Twitter'),
+        ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('name')->label('Jméno'),
+                TextColumn::make('position')->label('Pozice'),
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListTeamMembers::route('/'),
+            'create' => Pages\CreateTeamMember::route('/create'),
+            'edit' => Pages\EditTeamMember::route('/{record}/edit'),
+        ];
+    }
+}
