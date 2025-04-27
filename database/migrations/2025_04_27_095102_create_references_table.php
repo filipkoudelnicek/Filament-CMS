@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('position');
+            $table->char('lang_locale', 16);
             $table->text('content')->nullable();
             $table->timestamps();
         });

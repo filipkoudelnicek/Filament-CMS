@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\Reference;
+use App\Services\LanguageService;
 
 class ReferenceSection extends Component
 {
@@ -16,7 +17,8 @@ class ReferenceSection extends Component
      */
     public function __construct()
     {
-        $this->references = Reference::all()->map(function ($reference) {
+        $currentLanguage = LanguageService::getCurrentLanguage();
+        $this->references = Reference::where('lang_locale', $currentLanguage->locale)->get()->map(function ($reference) {
             $stars = $reference->content['stars'] ?? 0;
 
             return (object) [

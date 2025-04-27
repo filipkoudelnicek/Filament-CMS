@@ -10,6 +10,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\TextInput;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\Select;
+use App\Models\Language;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,10 +29,12 @@ class TeamMemberResource extends Resource
         return $form->schema([
             TextInput::make('name')->label('Jméno')->required(),
             TextInput::make('position')->label('Pozice')->required(),
-            CuratorPicker::make('content.photo')->label('Fotka')->required(),
+            Select::make('lang_locale')->label('Jazyk')
+                ->options(Language::where('active', 1)->pluck('name', 'locale'))->required(),
             TextInput::make('content.facebook')->label('Facebook'),
             TextInput::make('content.linkedin')->label('LinkedIn'),
             TextInput::make('content.twitter')->label('Twitter'),
+            CuratorPicker::make('content.photo')->label('Fotka')->required(),
         ]);
     }
 

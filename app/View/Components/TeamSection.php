@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\TeamMember;
+use App\Services\LanguageService;
 
 class TeamSection extends Component
 {
@@ -16,7 +17,8 @@ class TeamSection extends Component
      */
     public function __construct()
     {
-        $this->members = TeamMember::all();
+        $currentLanguage = LanguageService::getCurrentLanguage();
+        $this->members = TeamMember::where('lang_locale', $currentLanguage->locale)->get();
     }
 
     /**

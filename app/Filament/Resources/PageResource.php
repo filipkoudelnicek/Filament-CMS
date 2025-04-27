@@ -43,7 +43,7 @@ class PageResource extends Resource
                 ->schema([
                     Grid::make(2)
                         ->schema([
-                            TextInput::make('title')
+                            TextInput::make('title')->label('Název')
                                 ->required()
                                 ->live(onBlur: true)
                                 ->afterStateUpdated(function ($operation, $state, $set){
@@ -65,10 +65,10 @@ class PageResource extends Resource
 
                     Grid::make(2)
                         ->schema([
-                            Select::make('lang_locale')
+                            Select::make('lang_locale')->label('Jazyk')
                                 ->options(Language::where('active', 1)->pluck('name', 'locale'))
                                 ->required(),
-                            Select::make('type')
+                            Select::make('type')->label('Typ stránky')
                                 ->options(PageTypesHelper::getAvailablePageTypes())
                                 ->live()
                                 ->required()

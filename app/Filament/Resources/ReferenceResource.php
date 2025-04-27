@@ -13,6 +13,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
+use App\Models\Language;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -45,6 +46,8 @@ class ReferenceResource extends Resource
                         '5' => '5 hvězdiček',
                     ])
                 ->required(),
+                Select::make('lang_locale')->label('Jazyk')
+                    ->options(Language::where('active', 1)->pluck('name', 'locale'))->required(),
                 CuratorPicker::make('content.photo')->label('Fotka')->required(),
             ]);
     }

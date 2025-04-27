@@ -13,6 +13,7 @@ class Reference extends Model
     protected $fillable = [
         'name',
         'position',
+        'lang_locale',
         'content',
     ];
 }

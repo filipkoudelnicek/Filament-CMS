@@ -13,7 +13,7 @@ class TeamMember extends Model
     protected $fillable = [
         'name',
         'position',
-        'photo',
+        'lang_locale',
         'content',
     ];
 }
