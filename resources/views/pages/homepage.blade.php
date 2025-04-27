@@ -9,7 +9,7 @@
                 @isset($page->content['slides'])
                     @foreach($page->content['slides'] as $slide)
                         <div class="swiper-slide">
-                            <div class="tmp-banner-area bg_image-1 bg_image banner-one-height-control construction-2 tmp-section-gap" style="background-image: url('{{ $slide['background_image']['url'] ?? '' }}');">
+                            <div class="tmp-banner-area bg_image-1 bg_image banner-one-height-control construction-2 tmp-section-gap" style="background-image: url('{{ $slide['background_image'] ?? '' }}');">
                                 
                                 <div class="shape-image-banner-one">
                                     <img src="/assets/images/banner/shape/01.png" alt="Shape 1" class="one">
@@ -31,7 +31,7 @@
                                                     @endisset
 
                                                     @isset($slide['text'])
-                                                        <p class="disc">{!! nl2br(e($slide['text'])) !!}</p>
+                                                        <p class="disc">{{ $slide['text'] }}</p>
                                                     @endisset
 
                                                     @isset($slide['button_text'])
@@ -66,7 +66,7 @@
             <div class="row g-5">
                 @isset($page->content['specialization'])
                     @foreach($page->content['specialization'] as $specialization)
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12" data-sal-delay="{{ 150 + ($loop->index * 100) }}" data-sal="slide-up" data-sal-duration="800">
                             <div class="service-inner financial-service-inner agency-service feature-service">
                                 <div class="icon">
                                     @isset($specialization['icon'])
@@ -81,7 +81,7 @@
 
                                     @isset($specialization['text'])
                                         <p class="description">
-                                            {!! $specialization['text'] !!}
+                                            {{ $specialization['text'] }}
                                         </p>
                                     @endisset
 
@@ -142,7 +142,7 @@
 
                         @isset($page->content['aboutText'])
                             <p class="description" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
-                                {!! $page->content['aboutText'] !!}
+                                {{ $page->content['aboutText'] }}
                             </p>
                         @endisset
 
@@ -237,7 +237,7 @@
 
                                     @isset($service['text'])
                                         <p class="description">
-                                            {!! $service['text'] !!}
+                                            {{ $service['text'] }}
                                         </p>
                                     @endisset
 
@@ -288,7 +288,7 @@
                                 <div>
                                     @isset($numberItem['number'])
                                         <h3 class="title">
-                                            <span class="counter">{{ $numberItem['number'] }}</span>
+                                            <span class="counter">{{ $numberItem['number'] }}+</span>
                                         </h3>
                                     @endisset
                                 </div>
@@ -355,7 +355,7 @@
 
                                         @isset($process['text'])
                                             <p class="description">
-                                                {!! $process['text'] !!}
+                                                {{ $process['text'] }}
                                             </p>
                                         @endisset
                                     </div>
@@ -595,7 +595,7 @@
 
                             @isset($page->content['contactTextLeft'])
                                 <p class="description">
-                                    {!! $page->content['contactTextLeft'] !!}
+                                    {{ $page->content['contactTextLeft'] }}
                                 </p>
                             @endisset
                         </div>
@@ -637,7 +637,7 @@
 
                             @isset($page->content['contactTextRight'])
                                 <p class="description">
-                                    {!! $page->content['contactTextRight'] !!}
+                                    {{ $page->content['contactTextRight'] }}
                                 </p>
                             @endisset
                         </div>
