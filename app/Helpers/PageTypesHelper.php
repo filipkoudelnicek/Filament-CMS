@@ -11,14 +11,16 @@ class PageTypesHelper
     const TEXT = 'text';
     const BLOG = 'blog';
     const CONTACT = 'contact';
+    const ABOUT = 'about';
 
     public static function getAvailablePageTypes()
     {
         return [
-            self::HOMEPAGE => 'Homepage',
-            self::TEXT => 'Textová stránka',
+            self::HOMEPAGE => 'Domovská stránka',
+            self::ABOUT => 'O nás',
             self::BLOG => 'Blog',
             self::CONTACT => 'Kontakt',
+            self::TEXT => 'Textová stránka',
         ];
     }
 
@@ -29,6 +31,7 @@ class PageTypesHelper
             self::TEXT => PageController::class,
             self::BLOG => ArticleController::class,
             self::CONTACT => PageController::class,
+            self::ABOUT => PageController::class,
         ];
 
         return $controllers[$pageType] ?? null;

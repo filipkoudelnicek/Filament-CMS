@@ -334,7 +334,7 @@
                             <div class="single-services construction">
                                 <div class="services-inner">
                                     <div class="thumbnail thumbnail-rounded border-top-left hover-animation">
-                                        <a href="#">
+                                        <a href="#!">
                                             @isset($process['image'])
                                                 <x-curator-glider :media="$process['image']" />
                                             @endisset
