@@ -36,7 +36,6 @@ return [
     */
 
     'mailers' => [
-
         'smtp' => [
             'transport' => 'smtp',
             'scheme' => env('MAIL_SCHEME'),
@@ -111,6 +110,24 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Contact Form Settings
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the email settings specific to your contact form.
+    | This allows you to easily change recipients, subjects, etc. without
+    | modifying the code.
+    |
+    */
+
+    'contact_form' => [
+        'recipients' => [
+            env('MAIL_CONTACT_ADDRESS', env('MAIL_FROM_ADDRESS')),
+        ],
+        'subject' => env('MAIL_CONTACT_SUBJECT', 'Nová zpráva z kontaktního formuláře'),
     ],
 
 ];
