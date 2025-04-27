@@ -3,757 +3,525 @@
 @section('seo')<x-seo-module :seo="$page->content['seo'] ?? []" />@endsection
 
 @section('content')
-<div class="tmp-banner-swiper-one-area construction-2">
+    <div class="tmp-banner-swiper-one-area construction-2">
         <div class="swiper mySwiper-banner-one-construction">
             <div class="swiper-wrapper">
-                <!-- single swiper area start -->
-                <div class="swiper-slide">
-                    <div class="tmp-banner-area bg_image-1 bg_image banner-one-height-control construction-2 tmp-section-gap">
-                        <div class="shape-image-banner-one">
-                            <img src="assets/images/banner/shape/01.png" alt="banner" class="one">
-                            <img src="assets/images/banner/shape/02.png" alt="banner" class="two">
-                            <img src="assets/images/banner/shape/03.png" alt="banner" class="three">
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="banner-one-main-wrapper">
-                                        <div class="inner">
-                                            <span class="sub-title">Business Consulting Agency</span>
-                                            <h1 class="title">Transforming Ideas into Structures</h1>
-                                            <p class="disc">
-                                                We help small startups grow from idea to millions of users. we can also <br>
-                                            automate your marketing and customer service.
-                                            </p>
-                                            <div class="button-area-banner-one">
-                                                <a href="service.html" class="tmp-btn btn-primary">Get Started Now</a>
+                @isset($page->content['slides'])
+                    @foreach($page->content['slides'] as $slide)
+                        <div class="swiper-slide">
+                            <div class="tmp-banner-area bg_image-1 bg_image banner-one-height-control construction-2 tmp-section-gap" style="background-image: url('{{ $slide['background_image']['url'] ?? '' }}');">
+                                
+                                <div class="shape-image-banner-one">
+                                    <img src="/assets/images/banner/shape/01.png" alt="Shape 1" class="one">
+                                    <img src="/assets/images/banner/shape/02.png" alt="Shape 2" class="two">
+                                    <img src="/assets/images/banner/shape/03.png" alt="Shape 3" class="three">
+                                </div>
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="banner-one-main-wrapper">
+                                                <div class="inner">
+                                                    @isset($slide['sub_title'])
+                                                        <span class="sub-title">{{ $slide['sub_title'] }}</span>
+                                                    @endisset
+
+                                                    @isset($slide['title'])
+                                                        <h1 class="title">{{ $slide['title'] }}</h1>
+                                                    @endisset
+
+                                                    @isset($slide['text'])
+                                                        <p class="disc">{!! nl2br(e($slide['text'])) !!}</p>
+                                                    @endisset
+
+                                                    @isset($slide['button_text'])
+                                                        @isset($slide['button_link'])
+                                                            <div class="button-area-banner-one">
+                                                                <a href="{{ $slide['button_link'] }}" class="tmp-btn btn-primary">
+                                                                    {{ $slide['button_text'] }}
+                                                                </a>
+                                                            </div>
+                                                        @endisset
+                                                    @endisset
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- single swiper area start -->
-                <!-- single swiper area start -->
-                <div class="swiper-slide">
-                    <div class="tmp-banner-area bg_image-2 bg_image banner-one-height-control construction-2 tmp-section-gap">
-                        <div class="shape-image-banner-one">
-                            <img src="assets/images/banner/shape/01.png" alt="banner" class="one">
-                            <img src="assets/images/banner/shape/02.png" alt="banner" class="two">
-                            <img src="assets/images/banner/shape/03.png" alt="banner" class="three">
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="banner-one-main-wrapper">
-                                        <div class="inner">
-                                            <span class="sub-title">Business Consulting Agency</span>
-                                            <h1 class="title">Redefining Urban Landscapes</h1>
-                                            <p class="disc">
-                                                We help small startups grow from idea to millions of users. we can also <br>
-                                            automate your marketing and customer service.
-                                            </p>
-                                            <div class="button-area-banner-one">
-                                                <a href="service.html" class="tmp-btn btn-primary">Get Started Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- single swiper area start -->
-                <!-- single swiper area start -->
-                <div class="swiper-slide">
-                    <div class="tmp-banner-area bg_image-3 bg_image banner-one-height-control construction-2 tmp-section-gap">
-                        <div class="shape-image-banner-one">
-                            <img src="assets/images/banner/shape/01.png" alt="banner" class="one">
-                            <img src="assets/images/banner/shape/02.png" alt="banner" class="two">
-                            <img src="assets/images/banner/shape/03.png" alt="banner" class="three">
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="banner-one-main-wrapper">
-                                        <div class="inner">
-                                            <span class="sub-title">Business Consulting Agency</span>
-                                            <h1 class="title">From Concept to Construction</h1>
-                                            <p class="disc">
-                                                We help small startups grow from idea to millions of users. we can also <br>
-                                            automate your marketing and customer service.
-                                            </p>
-                                            <div class="button-area-banner-one">
-                                                <a href="service.html" class="tmp-btn btn-primary">Get Started Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- single swiper area start -->
+                    @endforeach
+                @endisset
             </div>
+
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next" data-tmp-cursor="lg transparent fw-bold" data-tmp-cursor-text="Next"></div>
             <div class="swiper-button-prev" data-tmp-cursor="lg transparent fw-bold" data-tmp-cursor-text="Prev"></div>
         </div>
     </div>
-    <!-- tmp banner area end -->
 
     <div class="best-service-we-provide tmp-section-gapTop">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner agency-service feature-service">
-                        <div class="icon">
-                            <img src="assets/images/services/agency-6.svg" alt="corporate_Business_Services_agency">
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Business Stratagy</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner agency-service feature-service">
-                        <div class="icon">
-                            <img src="assets/images/services/agency-1.svg" alt="corporate_Business_Services_agency">
+                @isset($page->content['specialization'])
+                    @foreach($page->content['specialization'] as $specialization)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="service-inner financial-service-inner agency-service feature-service">
+                                <div class="icon">
+                                    @isset($specialization['icon'])
+                                        <x-curator-glider :media="$specialization['icon']" />
+                                    @endisset
+                                </div>
 
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Custom website design</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner agency-service feature-service">
-                        <div class="icon">
-                            <img src="assets/images/services/agency-2.svg" alt="corporate_Business_Services_Agency">
+                                <div class="content">
+                                    @isset($specialization['title'])
+                                        <h2 class="title">{{ $specialization['title'] }}</h2>
+                                    @endisset
 
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Data Analysis</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner agency-service feature-service">
-                        <div class="icon">
-                            <img src="assets/images/services/agency-3.svg" alt="corporate_Business_Services_agency">
+                                    @isset($specialization['text'])
+                                        <p class="description">
+                                            {!! $specialization['text'] !!}
+                                        </p>
+                                    @endisset
 
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Saving &amp; Investments</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
+                                    <div class="three--dot">
+                                        <div class="dot dot-one"></div>
+                                        <div class="dot dot-two"></div>
+                                        <div class="dot dot-two"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endisset
             </div>
         </div>
     </div>
 
-
-    <!-- Tpm About Area Start  -->
     <div class="about-area tmp-section-gap about-style-one">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-thumbnail-construction">
                         <div class="image-large">
-                            <img src="assets/images/about/about-2.jpg" alt="construction_business">
+                            @isset($page->content['aboutImage'])
+                                <x-curator-glider :media="$page->content['aboutImage']" />
+                            @endisset
                         </div>
                         <div class="shape-bottom-left"></div>
+
                         <div class="work-done">
-                            <h3 class="title"><span class="counter">3025</span>+</h3>
-                            <p>Conpleated Work</p>
+                            @isset($page->content['aboutNumber'])
+                                <h3 class="title">
+                                    <span class="counter">{{ $page->content['aboutNumber'] }}</span>+
+                                </h3>
+                            @endisset
+
+                            @isset($page->content['aboutNumberText'])
+                                <p>{{ $page->content['aboutNumberText'] }}</p>
+                            @endisset
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6">
                     <div class="about-inner">
                         <div class="section-head text-align-left section-head-one-side">
                             <div class="section-sub-title">
-                                <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
-                                <span class="subtitle">ABOUT US</span>
+                                <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                                @isset($page->content['aboutSubtitle'])
+                                    <span class="subtitle">{{ $page->content['aboutSubtitle'] }}</span>
+                                @endisset
                             </div>
-                            <h2 class="title split-collab">Find out more about our <br> business Construction</h2>
+
+                            @isset($page->content['aboutTitle'])
+                                <h2 class="title split-collab">{{ $page->content['aboutTitle'] }}</h2>
+                            @endisset
                         </div>
 
-                        <p class="description" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget ornare quam. Sed sit amet sem sollicitudin, condimentum diam sed, consequat tellus. Quisque ac odio eget ligula gravida efficitur. Nunc facilisis sagittis magna, non venenatis mauris luctus quis.
-                        </p>
-                        <!-- Prograss bar Start  -->
-                        <div class="single-progress-area progress-stye-one" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                            <div class="progress-top">
-                                <p class="name">Consulting Service</p>
-                                <span class="parcent">
-                                    85%
-                                </span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow fadeInLeft bg--primary" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="single-progress-area progress-stye-one" data-sal-delay="300" data-sal="slide-up" data-sal-duration="800">
-                            <div class="progress-top">
-                                <p class="name">Finance Consulting</p>
-                                <span class="parcent">
-                                    66%
-                                </span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow fadeInLeft bg--primary" role="progressbar" style="width: 66%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <!-- Prograss bar End  -->
-                        <div class="thumbnail-with-title mt--50" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">
-                            <a href="contact.html" class="tmp-btn btn-primary">Contact Us</a>
-                        </div>
+                        @isset($page->content['aboutText'])
+                            <p class="description" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
+                                {!! $page->content['aboutText'] !!}
+                            </p>
+                        @endisset
+
+                        @isset($page->content['about'])
+                            @foreach($page->content['about'] as $index => $aboutItem)
+                                <div class="single-progress-area progress-stye-one"
+                                    data-sal-delay="{{ 250 + ($loop->index * 50) }}"
+                                    data-sal="slide-up"
+                                    data-sal-duration="800">
+
+                                    <div class="progress-top">
+                                        @isset($aboutItem['text'])
+                                            <p class="name">{{ $aboutItem['text'] }}</p>
+                                        @endisset
+
+                                        @isset($aboutItem['percent'])
+                                            <span class="parcent">
+                                                {{ $aboutItem['percent'] }}%
+                                            </span>
+                                        @endisset
+                                    </div>
+
+                                    @isset($aboutItem['percent'])
+                                        <div class="progress">
+                                            <div class="progress-bar wow fadeInLeft bg--primary"
+                                                role="progressbar"
+                                                style="width: {{ $aboutItem['percent'] }}%"
+                                                aria-valuenow="{{ $aboutItem['percent'] }}"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                    @endisset
+                                </div>
+                            @endforeach
+                        @endisset
+
+                        @isset($page->content['aboutButtonText'])
+                            @isset($page->content['aboutButtonLink'])
+                                <div class="thumbnail-with-title mt--50" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">
+                                    <a href="{{ $page->content['aboutButtonLink'] }}" class="tmp-btn btn-primary">
+                                        {{ $page->content['aboutButtonText'] }}
+                                    </a>
+                                </div>
+                            @endisset
+                        @endisset
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--Tpm About Area End  -->
 
-    <!-- Start Service Area  -->
     <div class="service-area tmp-section-gapBottom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="assets/images/services/section-custom-menubar.png " alt="Business_Consulting_services">
-                            <span>OUR SERVICES</span>
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Business_Consulting_services">
+
+                            @isset($page->content['servicesSubtitle'])
+                                <span>{{ $page->content['servicesSubtitle'] }}</span>
+                            @endisset
                         </div>
-                        <h2 class="title split-collab">Our Provided Services</h2>
+
+                        @isset($page->content['servicesTitle'])
+                            <h2 class="title split-collab">{{ $page->content['servicesTitle'] }}</h2>
+                        @endisset
                     </div>
                 </div>
             </div>
+
             <div class="row g-5">
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner">
-                        <div class="icon">
-                            <img src="assets/images/services/service-icon-1.png" alt="corporate Business Services">
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Roofing Installation</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
+                @isset($page->content['services'])
+                    @foreach($page->content['services'] as $service)
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12"
+                            data-sal-delay="{{ 150 + ($loop->index * 100) }}"
+                            data-sal="slide-up"
+                            data-sal-duration="800">
+
+                            <div class="service-inner financial-service-inner">
+                                <div class="icon">
+                                    @isset($service['icon'])
+                                        <x-curator-glider :media="$service['icon']" />
+                                    @endisset
+                                </div>
+
+                                <div class="content">
+                                    @isset($service['title'])
+                                        <h2 class="title">{{ $service['title'] }}</h2>
+                                    @endisset
+
+                                    @isset($service['text'])
+                                        <p class="description">
+                                            {!! $service['text'] !!}
+                                        </p>
+                                    @endisset
+
+                                    <div class="three--dot">
+                                        <div class="dot dot-one"></div>
+                                        <div class="dot dot-two"></div>
+                                        <div class="dot dot-two"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner">
-                        <div class="icon">
-                            <img src="assets/images/services/service-icon-2.png" alt="corporate Business Services">
 
                         </div>
-                        <div class="content">
-                            <h2 class="title">Interior Designing</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner">
-                        <div class="icon">
-                            <img src="assets/images/services/service-icon-3.png" alt="corporate Business Services">
-
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Plumbing Services</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner">
-                        <div class="icon">
-                            <img src="assets/images/services/service-icon-4.png" alt="corporate Business Services">
-
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Electrical Wiring</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="550" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner">
-                        <div class="icon">
-                            <img src="assets/images/services/service-icon-5.png" alt="corporate Business Services">
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Landscaping Design</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="650" data-sal="slide-up" data-sal-duration="800">
-                    <div class="service-inner financial-service-inner">
-                        <div class="icon">
-                            <img src="assets/images/services/service-icon-6.png" alt="corporate Business Services">
-
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Flooring Installation</h2>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <div class="three--dot">
-                                <div class="dot dot-one"></div>
-                                <div class="dot dot-two"></div>
-                                <div class="dot dot-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endisset
             </div>
         </div>
     </div>
-    <!-- End Service Area  -->
 
-    <!-- Start Main Counter up-5 Area  -->
     <div class="tmp-counterup-area tmp-section-gapBottom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
-                            <span class="subtitle">15000 Trusted</span>
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+
+                            @isset($page->content['numbersSubtitle'])
+                                <span class="subtitle">{{ $page->content['numbersSubtitle'] }}</span>
+                            @endisset
                         </div>
-                        <h2 class="title split-collab">Happy customers</h2>
+
+                        @isset($page->content['numbersTitle'])
+                            <h2 class="title split-collab">{{ $page->content['numbersTitle'] }}</h2>
+                        @endisset
                     </div>
                 </div>
             </div>
+
             <div class="row g-5 mt--20 counter_animation">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 counter__anim">
-                    <div class="count-box counter-style-4 text-center">
-                        <div>
-                            <h3 class="title"><span class="counter">1538</span>+</h3>
-                        </div>
-                        <h5 class="counter-title">Happy Clients.</h5>
-                    </div>
-                </div>
+                @isset($page->content['numbers'])
+                    @foreach($page->content['numbers'] as $numberItem)
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 counter__anim"
+                            @if(!$loop->first)
+                                data-sal-delay="{{ ($loop->index - 1) * 100 }}"
+                            @endif
+                        >
+                            <div class="count-box counter-style-4 text-center">
+                                <div>
+                                    @isset($numberItem['number'])
+                                        <h3 class="title">
+                                            <span class="counter">{{ $numberItem['number'] }}</span>
+                                        </h3>
+                                    @endisset
+                                </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 counter__anim" data-sal-delay="100">
-                    <div class="count-box counter-style-4 text-center">
-                        <div>
-                            <h3 class="title"><span class="counter">575</span>K+</h3>
+                                @isset($numberItem['text'])
+                                    <h5 class="counter-title">{{ $numberItem['text'] }}</h5>
+                                @endisset
+                            </div>
                         </div>
-                        <h5 class="counter-title">Employees</h5>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 counter__anim" data-sal-delay="200">
-                    <div class="count-box counter-style-4 text-center">
-                        <div>
-                            <h3 class="title"><span class="counter">690</span>+</h3>
-                        </div>
-                        <h5 class="counter-title">Useful Programs</h5>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 counter__anim" data-sal-delay="300">
-                    <div class="count-box counter-style-4 text-center">
-                        <div>
-                            <h3 class="title"><span class="counter">500</span>M</h3>
-                        </div>
-                        <h5 class="counter-title">Useful Programs</h5>
-                    </div>
-                </div>
+                    @endforeach
+                @endisset
             </div>
         </div>
     </div>
-    <!-- End Main Counter up-5 Area  -->
 
-
-    <!-- Tmp Servisec Processs Area Two Start -->
     <div class="tpm-services-process-area tmp-section-gapBottom">
         <div class="container">
             <div class="row" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
-                            <span class="subtitle">OUR work process</span>
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+
+                            @isset($page->content['processSubtitle'])
+                                <span class="subtitle">{{ $page->content['processSubtitle'] }}</span>
+                            @endisset
                         </div>
-                        <h2 class="title split-collab">Our Working Process</h2>
+
+                        @isset($page->content['processTitle'])
+                            <h2 class="title split-collab">{{ $page->content['processTitle'] }}</h2>
+                        @endisset
                     </div>
                 </div>
             </div>
 
             <div class="row g-5">
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                    <div class="single-services construction">
-                        <div class="services-inner">
-                            <div class="thumbnail thumbnail-rounded border-top-left hover-animation">
-                                <a href="#">
-                                    <img src="assets/images/services/services-round-1.png" alt="Business consulting services">
-                                    <div class="number-bg-round">
-                                        <span>01</span>
+                @isset($page->content['process'])
+                    @foreach($page->content['process'] as $process)
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12"
+                            data-sal-delay="{{ 150 + ($loop->index * 100) }}"
+                            data-sal="slide-up"
+                            data-sal-duration="800">
+
+                            <div class="single-services construction">
+                                <div class="services-inner">
+                                    <div class="thumbnail thumbnail-rounded border-top-left hover-animation">
+                                        <a href="#">
+                                            @isset($process['image'])
+                                                <x-curator-glider :media="$process['image']" />
+                                            @endisset
+
+                                            @isset($process['number'])
+                                                <div class="number-bg-round">
+                                                    <span>{{ $process['number'] }}</span>
+                                                </div>
+                                            @endisset
+                                        </a>
                                     </div>
-                                </a>
 
-                            </div>
-                            <div class="services-content services-content-style-1 text-center">
-                                <h5 class="title">Meeting Client</h5>
-                                <p class="description">
-                                    Continue indulged speaking the was out horrible for domestic position. Seeing rather her you not esteem men settle genius excuse.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                                    <div class="services-content services-content-style-1 text-center">
+                                        @isset($process['title'])
+                                            <h5 class="title">{{ $process['title'] }}</h5>
+                                        @endisset
 
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                    <div class="single-services construction">
-                        <div class="services-inner">
-                            <div class="thumbnail thumbnail-rounded border-top-left hover-animation">
-                                <a href="#"><img src="assets/images/services/services-round-2.png" alt="Business consulting services">
-                                    <div class="number-bg-round">
-                                        <span>02</span>
+                                        @isset($process['text'])
+                                            <p class="description">
+                                                {!! $process['text'] !!}
+                                            </p>
+                                        @endisset
                                     </div>
-                                </a>
+                                </div>
+                            </div>
 
-                            </div>
-                            <div class="services-content services-content-style-1 text-center">
-                                <h5 class="title">Project Strategy</h5>
-                                <p class="description">
-                                    Continue indulged speaking the was out horrible for domestic position. Seeing rather her you not esteem men settle genius excuse.
-                                </p>
-                            </div>
                         </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">
-                    <div class="single-services construction">
-                        <div class="services-inner">
-                            <div class="thumbnail thumbnail-rounded border-top-left hover-animation">
-                                <a href="#"><img src="assets/images/services/services-round-3.png" alt="Business consulting services">
-                                    <div class="number-bg-round">
-                                        <span>03</span>
-                                    </div>
-                            </div></a>
-
-                            <div class="services-content services-content-style-1 text-center">
-                                <h5 class="title">Campaign Design</h5>
-                                <p class="description">
-                                    Continue indulged speaking the was out horrible for domestic position. Seeing rather her you not esteem men settle genius excuse.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                    @endforeach
+                @endisset
             </div>
         </div>
     </div>
-    <!-- Tmp Servisec Processs Area Two End -->
 
-    <!-- tmp product area start -->
     <div class="tmp-product-area tmp-section-gapTop bg-product-1 with-construction">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-head color-white">
                         <div class="section-sub-title center-title">
-                            <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
-                            <span class="subtitle">OUR PORTFOLIO</span>
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+
+                            @isset($page->content['portfolioSubtitle'])
+                                <span class="subtitle">{{ $page->content['portfolioSubtitle'] }}</span>
+                            @endisset
                         </div>
-                        <h2 class="title split-collab">Let's Check Our Best Works </h2>
+
+                        @isset($page->content['portfolioTitle'])
+                            <h2 class="title split-collab">{{ $page->content['portfolioTitle'] }}</h2>
+                        @endisset
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="container-full">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- product swiper area start -->
                     <div class="product-swiper-area-one">
-
                         <div class="swiper mySwiper-portfolio-2-cons">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <!-- single product area start -->
-                                    <div class="signle-product-start">
-                                            <img src="assets/images/portfolio/portfolio-8.png" alt="corporate_business">
-                                        <div class="inner-content">
-                                                <h5 class="title">Corporate Design</h5>
-                                            <span class="designation">Financial advisory</span>
-                                            <div class="tag"></div>
+                                @isset($page->content['portfolio'])
+                                    @foreach($page->content['portfolio'] as $portfolioItem)
+                                        <div class="swiper-slide">
+                                            <div class="signle-product-start">
+                                                @isset($portfolioItem['image'])
+                                                    <x-curator-glider :media="$portfolioItem['image']" />
+                                                @endisset
+
+                                                <div class="inner-content">
+                                                    @isset($portfolioItem['title'])
+                                                        <h5 class="title">{{ $portfolioItem['title'] }}</h5>
+                                                    @endisset
+
+                                                    @isset($portfolioItem['text'])
+                                                        <span class="designation">{{ $portfolioItem['text'] }}</span>
+                                                    @endisset
+
+                                                    <div class="tag"></div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- single product area end -->
-                                </div>
-                                <div class="swiper-slide">
-                                    <!-- single product area start -->
-                                    <div class="signle-product-start">
-                                            <img src="assets/images/portfolio/portfolio-9.png" alt="corporate_business">
-                                        <div class="inner-content">
-                                                <h5 class="title">Executive Design Kit</h5>
-                                            <span class="designation">Financial advisory</span>
-                                            <div class="tag"></div>
-                                        </div>
-                                    </div>
-                                    <!-- single product area end -->
-                                </div>
-                                <div class="swiper-slide">
-                                    <!-- single product area start -->
-                                    <div class="signle-product-start">
-                                            <img src="assets/images/portfolio/portfolio-10.png" alt="corporate_business">
-                                        <div class="inner-content">
-                                            <a href="projects-details.html">
-                                                <h5 class="title">Business Theme Pack</h5>
-                                            </a>
-                                            <span class="designation">Financial advisory</span>
-                                            <div class="tag"></div>
-                                        </div>
-                                    </div>
-                                    <!-- single product area end -->
-                                </div>
-                                <div class="swiper-slide">
-                                    <!-- single product area start -->
-                                    <div class="signle-product-start">
-                                            <img src="assets/images/portfolio/portfolio-11.png" alt="corporate_business">
-                                        <div class="inner-content">
-                                            <a href="projects-details.html">
-                                                <h5 class="title">Executive Layout Set</h5>
-                                            </a>
-                                            <span class="designation">Financial advisory</span>
-                                            <div class="tag"></div>
-                                        </div>
-                                    </div>
-                                    <!-- single product area end -->
-                                </div>
-                                <div class="swiper-slide">
-                                    <!-- single product area start -->
-                                    <div class="signle-product-start">
-                                            <img src="assets/images/portfolio/portfolio-12.png" alt="corporate_business">
-                                        <div class="inner-content">
-                                            <a href="projects-details.html">
-                                                <h5 class="title">Professional Design</h5>
-                                            </a>
-                                            <span class="designation">Financial advisory</span>
-                                            <div class="tag"></div>
-                                        </div>
-                                    </div>
-                                    <!-- single product area end -->
-                                </div>
-                                <div class="swiper-slide">
-                                    <!-- single product area start -->
-                                    <div class="signle-product-start">
-                                            <img src="assets/images/portfolio/portfolio-7.png" alt="corporate_business">
-                                        <div class="inner-content">
-                                            <a href="projects-details.html">
-                                                <h5 class="title">Business Layout Library</h5>
-                                            </a>
-                                            <span class="designation">Financial advisory</span>
-                                            <div class="tag"></div>
-                                        </div>
-                                    </div>
-                                    <!-- single product area end -->
-                                </div>
+                                    @endforeach
+                                @endisset
                             </div>
+
                             <div class="swiper-pagination"></div>
                             <div class="swiper-button-next" data-tmp-cursor="md transparent fw-bold" data-tmp-cursor-text="Next"></div>
                             <div class="swiper-button-prev" data-tmp-cursor="md transparent fw-bold" data-tmp-cursor-text="Prev"></div>
                         </div>
                     </div>
-                    <!-- product swiper area end -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- tmp product area end -->
 
-    <!-- Tmp FAQ area Start  -->
     <div class="faq-area faq-style-one faq-bg-image bg_image tmp-section-gap mt-dec--180">
         <div class="container pt--180">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
-                            <span class="subtitle">QUESTION AND ANSWERS</span>
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+
+                            @isset($page->content['faqSubtitle'])
+                                <span class="subtitle">{{ $page->content['faqSubtitle'] }}</span>
+                            @endisset
                         </div>
-                        <h2 class="title split-collab">Frequency Asked Questions</h2>
+
+                        @isset($page->content['faqTitle'])
+                            <h2 class="title split-collab">{{ $page->content['faqTitle'] }}</h2>
+                        @endisset
                     </div>
                 </div>
             </div>
+
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 pr--30">
                     <div class="thumbnail-faq-cons">
-                        <img src="assets/images/faq/faq-3.jpg" alt="Business Consulting FAQ">
+                        @isset($page->content['faqImage'])
+                            <x-curator-glider :media="$page->content['faqImage']" />
+                        @endisset
                     </div>
                 </div>
+
                 <div class="col-lg-6">
                     <div class="faq-accordion">
                         <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <div class="accordion-header" id="headingOne">
-                                    <div class="accordion-button" data-bs-toggle="collapse" role="button" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            @isset($page->content['faq'])
+                                @foreach($page->content['faq'] as $index => $faq)
+                                    <div class="accordion-item">
+                                        <div class="accordion-header" id="heading{{ $index }}">
+                                            <div class="accordion-button {{ $loop->first ? '' : 'collapsed' }}" 
+                                                data-bs-toggle="collapse" 
+                                                role="button" 
+                                                data-bs-target="#collapse{{ $index }}" 
+                                                aria-expanded="{{ $loop->first ? 'true' : 'false' }}" 
+                                                aria-controls="collapse{{ $index }}">
 
-                                        <div class="accordion-button-left">
-                                            <i class="fa-regular fa-question"></i>
-                                            <span>Why is collaborative learning so important</span>
+                                                <div class="accordion-button-left">
+                                                    <i class="fa-regular fa-question"></i>
+                                                    @isset($faq['question'])
+                                                        <span>{{ $faq['question'] }}</span>
+                                                    @endisset
+                                                </div>
+
+                                                <div class="accordion-button-right">
+                                                    <i class="fa-sharp fa-light fa-arrow-right"></i>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="accordion-button-right">
-                                            <i class="fa-sharp fa-light fa-arrow-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Companions shy had solicitude favorable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <div class="accordion-header" id="headingTwo">
-                                    <div class="accordion-button collapsed" data-bs-toggle="collapse" role="button" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <div class="accordion-button-left">
-                                            <i class="fa-regular fa-question"></i>
-                                            <span>Do you offer free trials</span>
-                                        </div>
-                                        <div class="accordion-button-right">
-                                            <i class="fa-sharp fa-light fa-arrow-right"></i>
+
+                                        <div id="collapse{{ $index }}" 
+                                            class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}" 
+                                            aria-labelledby="heading{{ $index }}" 
+                                            data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                @isset($faq['answer'])
+                                                    {{ $faq['answer'] }}
+                                                @endisset
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Companions shy had solicitude favorable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <div class="accordion-header" id="headingThree">
-                                    <div class="accordion-button collapsed" data-bs-toggle="collapse" role="button" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <div class="accordion-button-left">
-                                            <i class="fa-regular fa-question"></i>
-                                            <span>Can I share my courses with non-registered users</span>
-                                        </div>
-                                        <div class="accordion-button-right">
-                                            <i class="fa-sharp fa-light fa-arrow-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Companions shy had solicitude favorable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <div class="accordion-header" id="headingFour">
-                                    <div class="accordion-button collapsed" data-bs-toggle="collapse" role="button" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        <div class="accordion-button-left">
-                                            <i class="fa-regular fa-question"></i>
-                                            <span>Can I share my courses with non-registered users</span>
-                                        </div>
-                                        <div class="accordion-button-right">
-                                            <i class="fa-sharp fa-light fa-arrow-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Companions shy had solicitude favorable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she.
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @endisset
                         </div>
 
                         <div class="faq-buttom">
-                            <h4 class="title">Still Have More Questions?
-                            </h4>
-                            <p>Contact Our <a href="#">Expert Support Team</a></p>
+                            @isset($page->content['faqMoreQuestions'])
+                                <h4 class="title">{{ $page->content['faqMoreQuestions'] }}</h4>
+                            @endisset
+
+                            @isset($page->content['faqContact'])
+                                @isset($page->content['faqContactLink'])
+                                    <p>
+                                        <a href="{{ $page->content['faqContactLink'] }}">{{ $page->content['faqContact'] }}</a>
+                                    </p>
+                                @endisset
+                            @endisset
                         </div>
 
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <!-- Tmp FAQ area Start  -->
 
-    <!-- Start team area  -->
     <div class="team-area tmp-section-gap bg-white">
         <div class="container">
             <div class="row">
@@ -761,9 +529,14 @@
                     <div class="section-head">
                         <div class="section-sub-title center-title">
                             <img src="assets/images/services/section-custom-menubar.png " alt="Corporate services">
-                            <span>OUR EXPERT TEAM</span>
+                            @isset($page->content['teamSubtitle'])
+                                <span>{{ $page->content['teamSubtitle'] }}</span>
+                            @endisset
                         </div>
-                        <h2 class="section-title split-collab">Meet Our Expert Team</h2>
+                        
+                        @isset($page->content['teamTitle'])
+                            <h2 class="section-title split-collab">{{ $page->content['teamTitle'] }}</h2>
+                        @endisset
                     </div>
                 </div>
             </div>
@@ -868,11 +641,8 @@
             </div>
         </div>
     </div>
-    <!-- End team area  -->
 
-    <!-- Start Testimonial with brand  -->
     <div class="testimonial-with-brand bg-1 bg_image">
-        <!-- Start Testimonial Area  -->
         <div class="testimonial-brand-area tmp-section-gapTop">
             <div class="container">
                 <div class="row">
@@ -881,9 +651,14 @@
                             <div class="section-head text-align-left">
                                 <div class="section-sub-title">
                                     <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
-                                    <span class="subtitle">Client’s Testimonials</span>
+                                    @isset($page->content['referenceSubtitle'])
+                                        <span class="subtitle">{{ $page->content['referenceSubtitle'] }}</span>
+                                    @endisset
                                 </div>
-                                <h2 class="title split-collab">What People Say About <br> Our Company</h2>
+                                
+                                @isset($page->content['referenceTitle'])
+                                    <h2 class="title split-collab">{{ $page->content['referenceTitle'] }}</h2>
+                                @endisset
                             </div>
 
                             <div class="button-next-prev">
@@ -896,10 +671,8 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- Slider main container -->
                         <div class="swiper-style-one tmp-section-gapBottom">
                             <div class="swiper-container-style-two">
-                                <!-- Additional required wrapper -->
                                 <div class="swiper-wrapper">
 
                                     <div class="swiper-slide">
@@ -1032,223 +805,100 @@
                 </div>
             </div>
         </div>
-        <!-- End Testimonial Area  -->
     </div>
-    <!-- End Testimonial with brand  -->
 
-    <!-- Start Contact Area  -->
     <div class="contact-area-three tmp-section-gapTop">
         <div class="bg-shape">
-            <img src="assets/images/cta/02.png" alt="bussiness-contact">
+            <img src="/assets/images/cta/02.png" alt="bussiness-contact">
         </div>
+
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-5">
                     <div class="contact-inner">
                         <div class="section-head section-head-one-side text-align-left" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                            <span class="title">Contact Us</span>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor magnaaliqua.
-                            </p>
+                            @isset($page->content['contactTitleLeft'])
+                                <span class="title">{{ $page->content['contactTitleLeft'] }}</span>
+                            @endisset
+
+                            @isset($page->content['contactTextLeft'])
+                                <p class="description">
+                                    {!! $page->content['contactTextLeft'] !!}
+                                </p>
+                            @endisset
                         </div>
 
                         <ul class="ft-link ft-link-style-three" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                            <li>
-                                <div class="single-contact background-transparent">
-                                    <div class="icon">
-                                        <i class="fa-light fa-phone"></i>
-                                    </div>
-                                    <div class="content">
-                                        <span>Call Us</span>
-                                        <a class="contact-here" href="#">+123 34598768</a>
-                                    </div>
-                                </div>
-                            </li>
+                            @isset($page->content['contact'])
+                                @foreach($page->content['contact'] as $contact)
+                                    <li>
+                                        <div class="single-contact background-transparent">
+                                            <div class="icon">
+                                                @isset($contact['icon'])
+                                                    <x-curator-glider :media="$contact['icon']" />
+                                                @endisset
+                                            </div>
 
+                                            <div class="content">
+                                                @isset($contact['name'])
+                                                    <span>{{ $contact['name'] }}</span>
+                                                @endisset
 
-                            <li>
-                                <div class="single-contact background-transparent">
-                                    <div class="icon">
-                                        <i class="fa-solid fa-envelope-open-text"></i>
-                                    </div>
-
-                                    <div class="content">
-                                        <span>E-mail</span>
-                                        <a class="contact-here" href="#">info@uibundle.com</a>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="single-contact background-transparent">
-                                    <div class="icon">
-                                        <i class="fa-solid fa-map-location-dot"></i>
-                                    </div>
-                                    <div class="content">
-                                        <span>Address</span>
-                                        <a class="contact-here" href="#">25/5 Double Street, Texas Houston USA</a>
-                                    </div>
-                                </div>
-                            </li>
-
+                                                @isset($contact['information'])
+                                                    <a class="contact-here" href="#">{{ $contact['information'] }}</a>
+                                                @endisset
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endisset
                         </ul>
-
-                        <div class="tmp-tag-list tag-list-one" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">
-                            <a class="tag-list" href="#">Facebook</a>
-                            <a class="tag-list" href="#">Twitter</a>
-                            <a class="tag-list" href="#">Linkedin</a>
-                            <a class="tag-list" href="#">Skype</a>
-                            <a class="tag-list" href="#">Pinterest</a>
-                        </div>
-
                     </div>
-
                 </div>
-                <div class="col-lg-7" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
 
+                <div class="col-lg-7" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                     <div class="contact-inner">
                         <div class="section-head section-head-one-side text-align-left">
-                            <span class="title">GET IN TOUCH</span>
-                            <p class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor magnaaliqua.
-                            </p>
+                            @isset($page->content['contactTitleRight'])
+                                <span class="title">{{ $page->content['contactTitleRight'] }}</span>
+                            @endisset
+
+                            @isset($page->content['contactTextRight'])
+                                <p class="description">
+                                    {!! $page->content['contactTextRight'] !!}
+                                </p>
+                            @endisset
                         </div>
-                        <div class="contact-form style-two">
-                            <form id="contact-form" action="#">
-                                <div class="contact-form-wrapper row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="input-field" name="contact-name" placeholder="Name" id="contact-name" type="text" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="input-field" name="contact-phone" placeholder="Phone" type="text">
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="input-field" name="contact-phone" placeholder="Email" type="email" required>
-                                        </div>
-                                    </div>
+                        <livewire:contact-form />
 
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="input-field" type="text" id="subject" placeholder="Website" name="Website">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <textarea class="input-field" placeholder="How can we help" name="contact-message" id="contact-message"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-submit-group">
-                                            <button name="submit" class="tmp-btn btn-primary" type="submit" id="submit">
-                                                Submit Now
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Contact Area  -->
 
-    <!-- Tmp Blog Area Start  -->
     <div class="tmp-blog-area tmp-section-gap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
-                            <span class="subtitle">LATEST BLOG</span>
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                            @isset($page->content['blogSubtitle'])
+                                <span class="subtitle">{{ $page->content['blogSubtitle'] }}</span>
+                            @endisset
                         </div>
-                        <h2 class="title split-collab">Latest News & Articles</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-5">
 
-                <div class="col-lg-6 col-md-6 col-sm-12 col1-2" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                    <div class="single-blog">
-                        <div class="blog-inner">
-                            <div class="thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-12.png" alt="Business Consulting Blog"></a>
-                                <div class="pmt-blog-meta">
-                                    <ul class="all-meta">
-                                        <li class="date"><span>20</span></li>
-                                        <li class="month"><span>JAN</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-head">
-                                    <span class="name">Sultan Ahmed</span>
-                                    <span class="designation">Consulting</span>
-                                </div>
-                                <div class="blog-body">
-                                    <a href="blog-details.html" class="title-area">
-                                        <h4 class="title">Consulted admitting wooded
-                                            is power acuteness.</h4>
-                                    </a>
-                                    <p class="description">
-                                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered.
-                                    </p>
-                                </div>
-                                <a class="btn-read-more" href="blog-details.html">
-                                    <span class="read-more-text">Read More</span>
-                                    <span class="read-more-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col1-2" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                    <div class="single-blog">
-                        <div class="blog-inner">
-                            <div class="thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-11.png" alt="Business Consulting Blog"></a>
-                                <div class="pmt-blog-meta">
-                                    <ul class="all-meta">
-                                        <li class="date"><span>20</span></li>
-                                        <li class="month"><span>JAN</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-head">
-                                    <span class="name">Sultan Ahmed</span>
-                                    <span class="designation">Consulting</span>
-                                </div>
-                                <div class="blog-body">
-                                    <a href="blog-details.html" class="title-area">
-                                        <h4 class="title">Grow your business strategy
-                                            with business consulting.</h4>
-                                    </a>
-                                    <p class="description">
-                                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered.
-                                    </p>
-                                </div>
-                                <a class="btn-read-more" href="blog-details.html">
-                                    <span class="read-more-text">Read More</span>
-                                    <span class="read-more-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                                </a>
-                            </div>
-                        </div>
+                        @isset($page->content['blogTitle'])
+                            <h2 class="title split-collab">{{ $page->content['blogTitle'] }}</h2>
+                        @endisset
                     </div>
                 </div>
             </div>
+
+            <livewire:latest-blogs />
         </div>
     </div>
+
 @endsection
