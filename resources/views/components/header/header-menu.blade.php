@@ -6,7 +6,7 @@
                     <div class="tmp-nav-area-one header--sticky">
                         <div class="logo-md-sm-device">
                             <a href="#" class="logo">
-                                <img src="assets/images/logo/logo-01.svg" alt="corporate_business-logo">
+                                <img src="/assets/images/logo/logo-01.svg" alt="corporate_business-logo">
                             </a>
                         </div>
 

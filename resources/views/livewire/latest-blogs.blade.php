@@ -13,7 +13,7 @@
                         <div class="pmt-blog-meta">
                             <ul class="all-meta">
                                 <li class="date"><span>{{ $post->publish_time?->format('d') }}</span></li>
-                                <li class="month"><span>{{ $post->publish_time?->format('M') }}</span></li>
+                                <li class="month"><span>{{ $post->publish_time?->locale(app()->getLocale())->translatedFormat('M') }}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -29,9 +29,9 @@
                                 <h4 class="title">{{ $post->title }}</h4>
                             </a>
 
-                            @isset($post->content['excerpt'])
+                            @isset($post->content['body'])
                                 <p class="description">
-                                    {{ Str::limit(strip_tags($post->content['excerpt']), 100) }}
+                                    {{ Str::limit(strip_tags($post->content['body']), 125) }}
                                 </p>
                             @endisset
                         </div>

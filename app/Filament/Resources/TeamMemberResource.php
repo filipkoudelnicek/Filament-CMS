@@ -44,6 +44,7 @@ class TeamMemberResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Jméno'),
                 TextColumn::make('position')->label('Pozice'),
+                TextColumn::make('lang_locale')->label('Jazyk'),
             ])
             ->filters([
                 //

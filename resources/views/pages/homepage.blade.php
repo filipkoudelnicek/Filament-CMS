@@ -55,8 +55,8 @@
             </div>
 
             <div class="swiper-pagination"></div>
-            <div class="swiper-button-next" data-tmp-cursor="lg transparent fw-bold" data-tmp-cursor-text="Next"></div>
-            <div class="swiper-button-prev" data-tmp-cursor="lg transparent fw-bold" data-tmp-cursor-text="Prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
 
@@ -287,7 +287,7 @@
                                 <div>
                                     @isset($numberItem['number'])
                                         <h3 class="title">
-                                            <span class="counter">{{ $numberItem['number'] }}+</span>
+                                            <span class="counter">{{ $numberItem['number'] }}</span>+
                                         </h3>
                                     @endisset
                                 </div>
@@ -421,8 +421,8 @@
                             </div>
 
                             <div class="swiper-pagination"></div>
-                            <div class="swiper-button-next" data-tmp-cursor="md transparent fw-bold" data-tmp-cursor-text="Next"></div>
-                            <div class="swiper-button-prev" data-tmp-cursor="md transparent fw-bold" data-tmp-cursor-text="Prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                         </div>
                     </div>
                 </div>
@@ -599,29 +599,53 @@
                             @endisset
                         </div>
 
-                        <ul class="ft-link ft-link-style-three" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                            @isset($page->content['contact'])
-                                @foreach($page->content['contact'] as $contact)
-                                    <li>
-                                        <div class="single-contact background-transparent">
-                                            <div class="icon">
-                                                @isset($contact['icon'])
-                                                    <x-curator-glider :media="$contact['icon']" />
-                                                @endisset
-                                            </div>
-
-                                            <div class="content">
-                                                @isset($contact['name'])
-                                                    <span>{{ $contact['name'] }}</span>
-                                                @endisset
-
-                                                @isset($contact['information'])
-                                                    <a class="contact-here" href="#">{{ $contact['information'] }}</a>
-                                                @endisset
-                                            </div>
+                        <ul class="ft-link ft-link-style-three">
+                            @isset($page->content['phoneName'], $page->content['phoneInformation'])
+                                <li>
+                                    <div class="single-contact background-transparent">
+                                        <div class="icon">
+                                            <i class="fa-light fa-phone"></i>
                                         </div>
-                                    </li>
-                                @endforeach
+                                        <div class="content">
+                                            <span>{{ $page->content['phoneName'] }}</span>
+                                            <a class="contact-here" href="tel:{{ $page->content['phoneInformation'] }}">
+                                                {{ $page->content['phoneInformation'] }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endisset
+
+                            @isset($page->content['emailName'], $page->content['emailInformation'])
+                                <li>
+                                    <div class="single-contact background-transparent">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-envelope-open-text"></i>
+                                        </div>
+                                        <div class="content">
+                                            <span>{{ $page->content['emailName'] }}</span>
+                                            <a class="contact-here" href="mailto:{{ $page->content['emailInformation'] }}">
+                                                {{ $page->content['emailInformation'] }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endisset
+
+                            @isset($page->content['addressName'], $page->content['addressInformation'])
+                                <li>
+                                    <div class="single-contact background-transparent">
+                                        <div class="icon">
+                                            <i class="fa-regular fa-map-location-dot"></i>
+                                        </div>
+                                        <div class="content">
+                                            <span>{{ $page->content['addressName'] }}</span>
+                                            <a class="contact-here" href="#!">
+                                                {{ $page->content['addressInformation'] }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
                             @endisset
                         </ul>
                     </div>

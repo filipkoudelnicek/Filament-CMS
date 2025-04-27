@@ -62,6 +62,7 @@ class ReferenceResource extends Resource
                     ->formatStateUsing(function ($state) {
                         return $state ? $state . ' ★' : '0 ★';
                     }),
+                TextColumn::make('lang_locale')->label('Jazyk'),
             ])
             ->filters([
                 //

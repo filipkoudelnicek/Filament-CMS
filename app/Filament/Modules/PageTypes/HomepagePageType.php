@@ -100,7 +100,7 @@ class HomepagePageType
                         CuratorPicker::make('image')->label('Obrázek')->required(),
                         TextInput::make('title')->label('Nadpis')->required(),
                         TextInput::make('text')->label('Text')->required(),
-                    ])->columns(3)->reorderable()->minItems(5)->columnSpan('full'),
+                    ])->columns(3)->reorderable()->minItems(6)->columnSpan('full'),
             ])->columns(2),
 
             Fieldset::make('FAQ')->schema([
@@ -111,7 +111,7 @@ class HomepagePageType
                 Repeater::make('content.faq')->label('FAQ')
                     ->schema([
                         TextInput::make('question')->label('Otázka')->required(),
-                        TextInput::make('answer')->label('Odpověď')->required(),
+                        Textarea::make('answer')->label('Odpověď')->required(),
                     ])->columns(2)->reorderable()->maxItems(4)->columnSpan('full'),
 
                 TextInput::make('content.faqMoreQuestions')->label('Text pod FAQ')->required(),
@@ -135,12 +135,20 @@ class HomepagePageType
                 TextInput::make('content.contactTitleRight')->label('Nadpis vpravo')->required(),
                 Textarea::make('content.contactTextRight')->label('Text vpravo')->required(),
 
-                Repeater::make('content.contact')->label('Kontaktní informace')
-                    ->schema([
-                        CuratorPicker::make('icon')->label('Ikona')->required(),
-                        TextInput::make('name')->label('Název')->required(),
-                        TextInput::make('information')->label('Informace')->required(),
-                    ])->columns(3)->reorderable()->maxItems(3)->columnSpan('full'),
+                Fieldset::make('Telefon')->schema([
+                    TextInput::make('content.phoneName')->label('Název'),
+                    TextInput::make('content.phoneInformation')->label('Informace'),
+                ])->columns(2),
+
+                Fieldset::make('Email')->schema([
+                    TextInput::make('content.emailName')->label('Název'),
+                    TextInput::make('content.emailInformation')->label('Informace'),
+                ])->columns(2),
+
+                Fieldset::make('Adresa')->schema([
+                    TextInput::make('content.addressName')->label('Název'),
+                    TextInput::make('content.addressInformation')->label('Informace'),
+                ])->columns(2),
             ])->columns(2),
 
             Fieldset::make('Poslední příspěvky')->schema([

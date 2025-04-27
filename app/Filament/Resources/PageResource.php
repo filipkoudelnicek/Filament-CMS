@@ -6,6 +6,7 @@ use App\Helpers\PageTypesHelper;
 use App\Filament\Modules\PageTypes\HomepagePageType;
 use App\Filament\Modules\PageTypes\TextPageType;
 use App\Filament\Modules\PageTypes\BlogPageType;
+use App\Filament\Modules\PageTypes\ContactPageType;
 use App\Filament\Modules\SeoModule;
 use App\Models\Language;
 use Filament\Forms\Components\Select;
@@ -108,6 +109,7 @@ class PageResource extends Resource
                                 PageTypesHelper::HOMEPAGE => HomepagePageType::getSchema(),
                                 PageTypesHelper::TEXT => TextPageType::getSchema(),
                                 PageTypesHelper::BLOG => BlogPageType::getSchema(),
+                                PageTypesHelper::CONTACT => ContactPageType::getSchema(),
                                 default => [],
                             })
                             ->key('pageTypes'),
