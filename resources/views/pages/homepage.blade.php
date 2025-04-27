@@ -9,8 +9,7 @@
                 @isset($page->content['slides'])
                     @foreach($page->content['slides'] as $slide)
                         <div class="swiper-slide">
-                            <div class="tmp-banner-area bg_image-1 bg_image banner-one-height-control construction-2 tmp-section-gap" style="background-image: url('{{ $slide['background_image'] ?? '' }}');">
-                                
+                            <div class="tmp-banner-area bg_image-1 bg_image banner-one-height-control construction-2 tmp-section-gap" style="background-image: url('{{ \App\Http\Controllers\PageController::getMediaUrl($slide['background_image']) }}');">
                                 <div class="shape-image-banner-one">
                                     <img src="/assets/images/banner/shape/01.png" alt="Shape 1" class="one">
                                     <img src="/assets/images/banner/shape/02.png" alt="Shape 2" class="two">
