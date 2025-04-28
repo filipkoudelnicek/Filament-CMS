@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-inner text-center">
-                    @isset($title)<h1 class="title split-collab">{{$title}}</h1>@endisset
+                    @isset($title)<h1 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{$title}}</h1>@endisset
                     @if (!empty($author) && !empty($publishedAt))
                         <ul class="page-list">
                             <li>{{$publishedAt}} / {{$author}}</li>

@@ -135,7 +135,7 @@
                             </div>
 
                             @isset($page->content['aboutTitle'])
-                                <h2 class="title split-collab">{{ $page->content['aboutTitle'] }}</h2>
+                                <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['aboutTitle'] }}</h2>
                             @endisset
                         </div>
 
@@ -208,7 +208,7 @@
                         </div>
 
                         @isset($page->content['servicesTitle'])
-                            <h2 class="title split-collab">{{ $page->content['servicesTitle'] }}</h2>
+                            <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['servicesTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -269,7 +269,7 @@
                         </div>
 
                         @isset($page->content['numbersTitle'])
-                            <h2 class="title split-collab">{{ $page->content['numbersTitle'] }}</h2>
+                            <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['numbersTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -317,7 +317,7 @@
                         </div>
 
                         @isset($page->content['processTitle'])
-                            <h2 class="title split-collab">{{ $page->content['processTitle'] }}</h2>
+                            <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['processTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -382,7 +382,7 @@
                         </div>
 
                         @isset($page->content['portfolioTitle'])
-                            <h2 class="title split-collab">{{ $page->content['portfolioTitle'] }}</h2>
+                            <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['portfolioTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -444,7 +444,7 @@
                         </div>
 
                         @isset($page->content['faqTitle'])
-                            <h2 class="title split-collab">{{ $page->content['faqTitle'] }}</h2>
+                            <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['faqTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -534,7 +534,7 @@
                         </div>
                         
                         @isset($page->content['teamTitle'])
-                            <h2 class="section-title split-collab">{{ $page->content['teamTitle'] }}</h2>
+                            <h2 class="section-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['teamTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -560,7 +560,7 @@
                                 </div>
                                 
                                 @isset($page->content['referenceTitle'])
-                                    <h2 class="title split-collab">{{ $page->content['referenceTitle'] }}</h2>
+                                    <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['referenceTitle'] }}</h2>
                                 @endisset
                             </div>
 
@@ -686,7 +686,7 @@
                         </div>
 
                         @isset($page->content['blogTitle'])
-                            <h2 class="title split-collab">{{ $page->content['blogTitle'] }}</h2>
+                            <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['blogTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>

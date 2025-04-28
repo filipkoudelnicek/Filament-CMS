@@ -42,7 +42,7 @@
                             </div>
 
                             @isset($page->content['aboutTitle'])
-                                <h2 class="title split-collab">{{ $page->content['aboutTitle'] }}</h2>
+                                <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['aboutTitle'] }}</h2>
                             @endisset
                         </div>
 
@@ -115,7 +115,7 @@
                         </div>
 
                         @isset($page->content['processTitle'])
-                            <h2 class="title split-collab">{{ $page->content['processTitle'] }}</h2>
+                            <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['processTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                         </div>
                         
                         @isset($page->content['teamTitle'])
-                            <h2 class="section-title split-collab">{{ $page->content['teamTitle'] }}</h2>
+                            <h2 class="section-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['teamTitle'] }}</h2>
                         @endisset
                     </div>
                 </div>
@@ -205,7 +205,7 @@
                                 </div>
                                 
                                 @isset($page->content['referenceTitle'])
-                                    <h2 class="title split-collab">{{ $page->content['referenceTitle'] }}</h2>
+                                    <h2 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $page->content['referenceTitle'] }}</h2>
                                 @endisset
                             </div>
 
