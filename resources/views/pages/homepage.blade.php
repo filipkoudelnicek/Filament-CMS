@@ -527,7 +527,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="assets/images/services/section-custom-menubar.png " alt="Corporate services">
+                            <img src="/assets/images/services/section-custom-menubar.png " alt="Corporate services">
                             @isset($page->content['teamSubtitle'])
                                 <span>{{ $page->content['teamSubtitle'] }}</span>
                             @endisset
@@ -553,7 +553,7 @@
                         <div class="testimonials-button-area">
                             <div class="section-head text-align-left">
                                 <div class="section-sub-title">
-                                    <img src="assets/images/services/section-custom-menubar.png " alt="Corporate_service">
+                                    <img src="/assets/images/services/section-custom-menubar.png " alt="Corporate_service">
                                     @isset($page->content['referenceSubtitle'])
                                         <span class="subtitle">{{ $page->content['referenceSubtitle'] }}</span>
                                     @endisset

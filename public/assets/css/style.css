@@ -20975,3 +20975,7 @@ body.loaded {
   list-style: unset;
   list-style-position: inside;
 }
+
+.count-box.counter-style-4 .counter-title{
+  max-width: 80%;
+}
