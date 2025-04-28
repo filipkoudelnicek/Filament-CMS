@@ -46,6 +46,10 @@ class ArticleService
     public static function getLatestArticles(int $limit = 2, string $locale = null)
     {
         $query = Article::where('active', true)
+            ->where(function ($query) {
+                $query->whereNull('publish_time')
+                    ->orWhere('publish_time', '<=', Carbon::now());
+            })
             ->orderBy('created_at', 'desc');
             
         if ($locale) {

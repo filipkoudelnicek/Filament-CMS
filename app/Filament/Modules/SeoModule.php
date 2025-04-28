@@ -9,6 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Fieldset;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class SeoModule
 {
@@ -39,23 +40,19 @@ class SeoModule
 
                     Fieldset::make('Open Graph (Facebook & Sociální sítě)')
                         ->schema([
-                            TextInput::make('content.seo.og_type')
-                                ->label('OG Typ'),
-
                             TextInput::make('content.seo.og_title')
                                 ->label('OG Titulek')
                                 ->maxLength(60),
+
+                            TextInput::make('content.seo.og_type')
+                                ->label('OG Typ'),
 
                             Textarea::make('content.seo.og_desc')
                                 ->label('OG Popis')
                                 ->rows(3)
                                 ->maxLength(160),
 
-                            FileUpload::make('content.seo.og_image')
-                                ->label('OG Obrázek')
-                                ->image()
-                                ->directory('seo_og_images')
-                                ->helperText('Doporučený rozměr: 1200x630 px'),
+                            CuratorPicker::make('content.seo.og_image')->label('OG Obrázek')->helperText('Doporučený rozměr: 1200x630 px'),
                         ]),
                 ]),
         ];

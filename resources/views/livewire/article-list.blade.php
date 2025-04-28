@@ -15,7 +15,7 @@
                             <div class="blog-content text-center">
                                 <div class="blog-head">
                                     <span class="name">{{ $article->publish_time?->format('j.n.Y') }}</span>
-                                    <span class="designation">{{ $article->category->name ?? 'Nezařazeno' }}</span>
+                                    <span class="designation">{{ $article->user->name }}</span>
                                 </div>
                                 <div class="blog-body">
                                     <a href="{{ $this->getArticleUrl($article) }}" class="title-area">

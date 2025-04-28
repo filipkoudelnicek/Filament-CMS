@@ -20979,3 +20979,11 @@ body.loaded {
 .count-box.counter-style-4 .counter-title{
   max-width: 80%;
 }
+
+.breadcrumb-inner{
+  padding: 40px;
+}
+
+.article-detail p{
+  margin: 0 0 20px;
+}

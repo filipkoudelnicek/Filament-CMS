@@ -27,6 +27,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Unique;
 
 class ArticleResource extends Resource
 {
@@ -44,27 +45,31 @@ class ArticleResource extends Resource
                             TextInput::make('title')
                                 ->required()
                                 ->live(onBlur: true)
-                                ->afterStateUpdated(function ($operation, $state, $set) {
-                                    if ($operation === 'edit') {
+                                ->afterStateUpdated(function ($operation, $state, $set){
+                                    if ($operation === 'edit'){
                                         return;
                                     }
-                                    $set('slug', \Illuminate\Support\Str::slug($state));
+                                    $set('slug', Str::slug($state));
                                 }),
                             TextInput::make('slug')
-                                ->unique(ignoreRecord: true)
                                 ->required()
                                 ->minLength(1)
-                                ->maxLength(255),
+                                ->maxLength(255)
+                                ->unique(ignoreRecord: true, modifyRuleUsing: function (Unique $rule, callable $get) {
+                                    return $rule
+                                        ->where('lang_locale', $get('lang_locale'))
+                                        ->where('slug', $get('slug'));
+                                }),
                         ]),
                     
                     Grid::make(2)
                         ->schema([
-                            Select::make('lang_locale')
-                                ->options(\App\Models\Language::where('active', 1)->pluck('name', 'locale'))
+                            Select::make('lang_locale')->label('Jazyk')
+                                ->options(Language::where('active', 1)->pluck('name', 'locale'))
                                 ->required(),
                             Select::make('user_id')
                                 ->default(auth()->id())
-                                ->options(\App\Models\User::all()->pluck('name', 'id'))
+                                ->options(User::all()->pluck('name', 'id'))
                                 ->nullable()
                                 ->label('Uživatel'),
                         ]),

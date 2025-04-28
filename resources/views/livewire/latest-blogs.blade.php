@@ -20,8 +20,8 @@
 
                     <div class="blog-content">
                         <div class="blog-head">
-                            <span class="name">{{ $post->user->name }}</span>
-                            <span class="designation">{{ $post->category->name ?? 'Nezařazeno' }}</span>
+                            <span class="name">{{ $post->publish_time?->format('j.n.Y') }}</span>
+                            <span class="designation">{{ $post->user->name }}</span>
                         </div>
 
                         <div class="blog-body">
