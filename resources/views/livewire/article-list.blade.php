@@ -22,7 +22,7 @@
                                         <h4 class="title">{{ $article->title }}</h4>
                                     </a>
                                     <a class="btn-read-more" href="{{ $this->getArticleUrl($article) }}">
-                                        <span class="read-more-text">Read More</span>
+                                        <span class="read-more-text">{{ __('Číst více') }}</span>
                                         <span class="read-more-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                     </a>
                                 </div>

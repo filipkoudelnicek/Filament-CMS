@@ -31,13 +31,13 @@
 
                             @isset($post->content['body'])
                                 <p class="description">
-                                    {{ Str::limit(strip_tags($post->content['body']), 125) }}
+                                    {{ $this->getFirstParagraph($post->content['body']) }}
                                 </p>
                             @endisset
                         </div>
 
                         <a class="btn-read-more" href="{{ $this->getArticleUrl($post) }}">
-                            <span class="read-more-text">Read More</span>
+                            <span class="read-more-text">{{ __('Číst více') }}</span>
                             <span class="read-more-icon"><i class="fa-solid fa-arrow-right"></i></span>
                         </a>
                     </div>
