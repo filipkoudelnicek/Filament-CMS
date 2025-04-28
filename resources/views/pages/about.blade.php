@@ -35,7 +35,7 @@
                     <div class="about-inner">
                         <div class="section-head text-align-left section-head-one-side">
                             <div class="section-sub-title">
-                                <img src="//assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                                <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
                                 @isset($page->content['aboutSubtitle'])
                                     <span class="subtitle">{{ $page->content['aboutSubtitle'] }}</span>
                                 @endisset
@@ -107,7 +107,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="//assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
 
                             @isset($page->content['processSubtitle'])
                                 <span class="subtitle">{{ $page->content['processSubtitle'] }}</span>
