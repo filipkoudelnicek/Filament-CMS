@@ -17,13 +17,7 @@ class headerMenu extends Component
      */
     public function __construct()
     {
-        $currentLocale = app()->getLocale();
-        
-        $this->menuPages = Page::where('active', 1)
-            ->where('in_menu', 1)
-            ->where('lang_locale', $currentLocale)
-            ->orderBy('in_menu_order', 'asc')
-            ->get();
+        $this->menuPages = PageService::getMenuPages();
     }
 
     /**

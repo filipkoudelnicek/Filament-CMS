@@ -20987,3 +20987,7 @@ body.loaded {
 .article-detail p{
   margin: 0 0 20px;
 }
+
+.footer-main .thumbnail img{
+  max-height: 80px;
+}

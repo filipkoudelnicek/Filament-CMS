@@ -106,4 +106,18 @@ class PageService
             ->where('active', true)
             ->first();
     }
+    
+    /**
+     * Získá stránky pro zobrazení v menu
+     */
+    public static function getMenuPages(string $locale = null)
+    {
+        $locale = $locale ?? app()->getLocale();
+        
+        return Page::where('active', 1)
+            ->where('in_menu', 1)
+            ->where('lang_locale', $locale)
+            ->orderBy('in_menu_order', 'asc')
+            ->get();
+    }
 }

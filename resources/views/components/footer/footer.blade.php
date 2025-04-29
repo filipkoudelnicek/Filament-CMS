@@ -5,21 +5,21 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-footer-wrapper border-right mr--20">
                         <div class="logo">
-                            <a href="index.html">
-                                <img src="assets/images/logo/logo-02.svg" alt="logo">
+                            <a href="#">
+                                <img src="/assets/images/logo/logo-02.svg" alt="logo">
                             </a>
                         </div>
 
                         <p class="description">
-                            Proin Pretium Sem Libero, Nec Aliquet Augue Lobortis In. Phasellus Nibh Quam, Molestie Id Est Sit Amet, Luctus Pulvinar
+                            {{ __('Komplexní stavební služby pro firmy i soukromé investory. Od prvního návrhu až po dokončení stavby — spolehlivě, efektivně a bez starostí.') }}
                         </p>
 
 
                         <div class="day-time">
                             <div class="icon"><i class="fa-solid fa-alarm-clock"></i></div>
                             <div class="content">
-                                <div class="day">Sunday - Friday:</div>
-                                <div class="time">9:00 AM – 8:00 PM</div>
+                                <div class="day">{{ __('Pondělí') }} - {{ __('Pátek') }}:</div>
+                                <div class="time">8:00 – 16:00</div>
                             </div>
                         </div>
 
@@ -33,39 +33,49 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="single-footer-wrapper pl-50 pl_md--0 pl_sm--0">
-                        <h5 class="ft-title">Quick Link</h5>
+                        <h5 class="ft-title">{{ __('Menu') }}</h5>
                         <ul class="ft-link">
-                            <li>
-                                <a href="about.html">About Company</a>
-                            </li>
-                            <li>
-                                <a href="team.html">Meet Our Team</a>
-                            </li>
-                            <li>
-                                <a href="service.html">Our Services</a>
-                            </li>
-                            <li>
-                                <a href="blog.html">News & Media</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact Us</a>
-                            </li>
-
-                            <li>
-                                <a href="faq.html">Support</a>
-                            </li>
-
+                            @foreach($menuPages as $page)
+                                <li>
+                                    <a href="{{ $getPageUrl($page) }}">
+                                        {{ $page->in_menu_title ?? $page->title }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
 
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-footer-wrapper pr--15">
+                        <h5 class="ft-title">{{ __('Poslední příspěvky') }}</h5>
+
+                        @foreach($latestArticles as $post)
+                            <div class="single-post">
+                                <div class="thumbnail">
+                                    @isset($post->content['thumbnail'])
+                                        <x-curator-glider :media="$post->content['thumbnail']" />
+                                    @endisset
+                                </div>
+                                <div class="content">
+                                    <div class="date"><i class="fa-light fa-calendar-days"></i><span>{{ $post->publish_time?->format('d M, Y') }}</span></div>
+
+                                    <a href="{{ $getArticleUrl($post) }}">
+                                        <h6 class="title">{{ $post->title }}</h6>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">
-                        <h5 class="ft-title">Official info:</h5>
+                        <h5 class="ft-title">{{ __('E-Kontaktní údaje') }}:</h5>
                         <ul class="ft-link">
-                            <li class="ft-location">5919 Trussville Crossings Pkwy, new
-                                Dusting town, Austria</li>
+                            <li class="ft-location">{{ __('Česká republika') }} Tř. Tomáše Bati 123, Zlín</li>
 
                             <li>
                                 <div class="single-contact">
@@ -75,8 +85,8 @@
                                     </div>
 
                                     <div class="content">
-                                        <span>E-mail:</span>
-                                        <a href="mailto:webmaster@example.com">info@uibundle.com</a>
+                                        <span>{{ __('E-mail') }}:</span>
+                                        <a href="mailto:info@stavime.cz">info@stavime.cz</a>
                                     </div>
 
                                 </div>
@@ -88,8 +98,8 @@
                                         <i class="fa-light fa-phone"></i>
                                     </div>
                                     <div class="content">
-                                        <span>Phone:</span>
-                                        <a href="tel:+4733378901">+123 34598768</a>
+                                        <span>{{ __('Telefon') }}:</span>
+                                        <a href="tel:+420123456789">+420 123 456 789</a>
                                     </div>
 
                                 </div>
@@ -108,7 +118,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="main-wrapper">
-                    <p>© Copyright 2024. All Rights Reserved by <a href="#">Themes-Park</a></p>
+                    <p>© Copyright {{ date('Y') }}. {{ __('Všechna práva vyhrazena') }}. <a href="https://www.filipkoudelnicek.cz" target="_blank">Filip Koudelníček</a></p>
                 </div>
             </div>
         </div>
