@@ -20,7 +20,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Forms\Components\Toggle;
 use App\Filament\Resources\PageResource\Pages;
-use App\Filament\Resources\PageResource\RelationManagers;
 use App\Models\Page;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -37,6 +36,9 @@ class PageResource extends Resource
     protected static ?string $model = Page::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Stránky';
+    protected static ?string $modelLabel = 'Stránky';
+    protected static ?string $pluralModelLabel = 'Stránky';
 
     public static function form(Form $form): Form
     {
@@ -54,7 +56,7 @@ class PageResource extends Resource
                                     }
                                     $set('slug', Str::slug($state));
                                 }),
-                            TextInput::make('slug')
+                            TextInput::make('slug')->label('Slug')
                                 ->required()
                                 ->minLength(1)
                                 ->maxLength(255)
@@ -125,10 +127,10 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->sortable(),
-                TextColumn::make('slug')->sortable(),
-                TextColumn::make('lang_locale')->label('Jazyk'),
-                ToggleColumn::make('active')->label('Aktivní'),
+                TextColumn::make('title')->sortable()->label('Název'),
+                TextColumn::make('slug')->sortable()->label('Slug'),
+                TextColumn::make('lang_locale')->sortable()->label('Jazyk'),
+                ToggleColumn::make('active')->sortable()->label('Aktivní'),
             ])
             ->filters([
                 //

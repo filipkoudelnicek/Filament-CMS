@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TeamMemberResource\Pages;
-use App\Filament\Resources\TeamMemberResource\RelationManagers;
 use App\Models\TeamMember;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -22,7 +21,10 @@ class TeamMemberResource extends Resource
 {
     protected static ?string $model = TeamMember::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationLabel = 'Členové týmu';
+    protected static ?string $modelLabel = 'Členové týmu';
+    protected static ?string $pluralModelLabel = 'Členové týmu';
 
     public static function form(Form $form): Form
     {

@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LanguageResource\Pages;
-use App\Filament\Resources\LanguageResource\RelationManagers;
 use App\Models\Language;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
@@ -21,7 +19,10 @@ class LanguageResource extends Resource
 {
     protected static ?string $model = Language::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
+    protected static ?string $navigationLabel = 'Jazyky';
+    protected static ?string $modelLabel = 'Jazyky';
+    protected static ?string $pluralModelLabel = 'Jazyky';
 
     public static function form(Form $form): Form
     {
@@ -37,9 +38,9 @@ class LanguageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->sortable(),
-                TextColumn::make('locale')->sortable(),
-                CheckboxColumn::make('active')->label('Aktivní'),
+                TextColumn::make('name')->sortable()->label('Název'),
+                TextColumn::make('locale')->sortable()->label('Zkratka jazyka'),
+                CheckboxColumn::make('active')->sortable()->label('Aktivní'),
             ])
             ->filters([
                 //

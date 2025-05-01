@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArticleResource\Pages;
-use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Filament\Modules\SeoModule;
 use App\Models\Article;
 use App\Models\Language;
@@ -33,7 +32,10 @@ class ArticleResource extends Resource
 {
     protected static ?string $model = Article::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationLabel = 'Články';
+    protected static ?string $modelLabel = 'Článek';
+    protected static ?string $pluralModelLabel = 'Články';
 
     public static function form(Form $form): Form
     {
@@ -42,7 +44,7 @@ class ArticleResource extends Resource
                 ->schema([
                     Grid::make(2)
                         ->schema([
-                            TextInput::make('title')
+                            TextInput::make('title')->label('Název')
                                 ->required()
                                 ->live(onBlur: true)
                                 ->afterStateUpdated(function ($operation, $state, $set){
@@ -51,7 +53,7 @@ class ArticleResource extends Resource
                                     }
                                     $set('slug', Str::slug($state));
                                 }),
-                            TextInput::make('slug')
+                            TextInput::make('slug')->label('Slug')
                                 ->required()
                                 ->minLength(1)
                                 ->maxLength(255)
@@ -61,7 +63,7 @@ class ArticleResource extends Resource
                                         ->where('slug', $get('slug'));
                                 }),
                         ]),
-                    
+
                     Grid::make(2)
                         ->schema([
                             Select::make('lang_locale')->label('Jazyk')
@@ -73,7 +75,7 @@ class ArticleResource extends Resource
                                 ->nullable()
                                 ->label('Uživatel'),
                         ]),
-                    
+
                     Grid::make(2)
                         ->schema([
                             Toggle::make('active')
@@ -91,7 +93,7 @@ class ArticleResource extends Resource
                         RichEditor::make('content.body')->label('Obsah')->columnSpanFull(),
                     ])->columns(2),
                 ]),
-        
+
             ...SeoModule::make(),
         ]);
     }
@@ -100,8 +102,8 @@ class ArticleResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->sortable(),
-                TextColumn::make('slug')->sortable(),
+                TextColumn::make('title')->sortable()->label('Název'),
+                TextColumn::make('slug')->sortable()->label('Slug'),
                 TextColumn::make('lang_locale')->label('Jazyk'),
                 ToggleColumn::make('active')->label('Aktivní'),
             ])

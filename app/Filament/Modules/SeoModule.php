@@ -21,7 +21,7 @@ class SeoModule
                     Fieldset::make('SEO Nastavení')
                         ->schema([
                             TextInput::make('content.seo.title')
-                                ->label('SEO Titulek')
+                                ->label('Meta Titulek')
                                 ->maxLength(60),
 
                             Textarea::make('content.seo.description')

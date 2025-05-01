@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -20,17 +19,21 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationLabel = 'Uživatelé';
+    protected static ?string $modelLabel = 'Uživatelé';
+    protected static ?string $pluralModelLabel = 'Uživatelé';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->label('Jméno')
+                TextInput::make('name')->label('Jméno')
                     ->required(),
-                TextInput::make('email')->required()->email()->unique(ignoreRecord: true),
-                Select::make('role')
+                TextInput::make('email')->label('Email')
+                    ->required()
+                    ->email()->unique(ignoreRecord: true),
+                Select::make('role')->label('Role')
                     ->relationship('roles', 'name')
                     ->preload()
                     ->required(),
@@ -41,10 +44,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('email'),
-                TextColumn::make('roles.name')
+                TextColumn::make('name')->searchable()->label('Jméno'),
+                TextColumn::make('email')->label('Email'),
+                TextColumn::make('roles.name')->label('Role'),
             ])
             ->filters([
                 //

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReferenceResource\Pages;
-use App\Filament\Resources\ReferenceResource\RelationManagers;
 use App\Models\Reference;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -23,7 +22,10 @@ class ReferenceResource extends Resource
 {
     protected static ?string $model = Reference::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-bookmark';
+    protected static ?string $navigationLabel = 'Reference';
+    protected static ?string $modelLabel = 'Reference';
+    protected static ?string $pluralModelLabel = 'Reference';
 
     public static function form(Form $form): Form
     {
