@@ -10,6 +10,7 @@ use App\Models\Page;
 use App\Services\ArticleService;
 use App\Services\LanguageService;
 use App\Models\Article;
+use App\Services\UrlService;
 
 class footer extends Component
 {
