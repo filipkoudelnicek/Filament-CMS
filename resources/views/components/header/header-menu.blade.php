@@ -16,7 +16,7 @@
                                     @foreach($menuPages as $page)
                                         <li>
                                             <a class="nav-link" href="{{ $getPageUrl($page) }}">
-                                                <span class="rolling-text">{{ $page->in_menu_title ?? $page->title }}</span>
+                                                <span>{{ $page->in_menu_title ?? $page->title }}</span>
                                             </a>
                                         </li>
                                     @endforeach
