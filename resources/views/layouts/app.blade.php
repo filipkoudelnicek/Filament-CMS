@@ -20,8 +20,8 @@
 
     @yield('seo')
 
-    <title>@yield('title')</title>
-    
+    <title>@yield('title') - Bizper</title>
+
 </head>
 
 <body class="index-one">
@@ -30,7 +30,7 @@
     @yield('content')
 
     <x-footer.footer />
-    
+
     @vite('resources/js/app.js')
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/vendor/jquery-ui.min.js"></script>
