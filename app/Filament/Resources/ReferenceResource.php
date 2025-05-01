@@ -58,7 +58,7 @@ class ReferenceResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label('Jméno'),
+                TextColumn::make('name')->searchable()->label('Jméno'),
                 TextColumn::make('position')->limit(50)->label('Pozice'),
                 TextColumn::make('content.stars')->label('Hodnocení')
                     ->formatStateUsing(function ($state) {
@@ -71,6 +71,7 @@ class ReferenceResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

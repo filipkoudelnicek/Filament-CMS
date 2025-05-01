@@ -44,7 +44,7 @@ class TeamMemberResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label('Jméno'),
+                TextColumn::make('name')->searchable()->label('Jméno'),
                 TextColumn::make('position')->label('Pozice'),
                 TextColumn::make('lang_locale')->label('Jazyk'),
             ])
@@ -53,6 +53,7 @@ class TeamMemberResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

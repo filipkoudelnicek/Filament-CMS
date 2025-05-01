@@ -127,8 +127,8 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->sortable()->label('Název'),
-                TextColumn::make('slug')->sortable()->label('Slug'),
+                TextColumn::make('title')->sortable()->searchable()->label('Název'),
+                TextColumn::make('slug')->label('Slug'),
                 TextColumn::make('lang_locale')->sortable()->label('Jazyk'),
                 ToggleColumn::make('active')->sortable()->label('Aktivní'),
             ])
@@ -137,6 +137,7 @@ class PageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
