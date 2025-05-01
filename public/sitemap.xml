@@ -9,23 +9,91 @@
     
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/en/test</loc>
+        <loc>http://127.0.0.1:8000/blog</loc>
     
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/novinky</loc>
+        <loc>http://127.0.0.1:8000/kontakt</loc>
     
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/en/news</loc>
+        <loc>http://127.0.0.1:8000/o-nas</loc>
     
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/novinky/clanek</loc>
+        <loc>http://127.0.0.1:8000/en/contact</loc>
     
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/en/news/article</loc>
+        <loc>http://127.0.0.1:8000/en/blog</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/about</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/jak-probiha-stavba-rodinneho-domu</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/na-co-si-dat-pozor-pri-vyberu-stavební-firmy</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/nejcastejsi-chyby-pri-stavbe-domu</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/vyhody-stavby-na-klic-2025</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/moderni-trendy-v-bydleni-2025</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/kdy-je-nejlepsi-cas-zacit-stavet</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/jak-pripravit-pozemek-pro-stavbu</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/blog/rekonstrukce-versus-novostavba</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/how-to-prepare-your-land-for-construction</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/renovation-vs-new-construction-which-one-to-choose</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/when-to-start-building</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/choosing-the-right-builder</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/build-vs-buy</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/step-by-step-building-guide</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/cost-saving-tips-for-construction</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/en/blog/what-to-include-in-a-building-contract</loc>
     
             </url>
 </urlset>
