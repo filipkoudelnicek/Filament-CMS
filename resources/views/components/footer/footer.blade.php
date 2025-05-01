@@ -24,10 +24,10 @@
                         </div>
 
                         <ul class="social-icons solid-social-icons rounded-social-icons">
-                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            <li><a href="https://x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">
-                        <h5 class="ft-title">{{ __('E-Kontaktní údaje') }}:</h5>
+                        <h5 class="ft-title">{{ __('Kontaktní údaje') }}:</h5>
                         <ul class="ft-link">
                             <li class="ft-location">{{ __('Česká republika') }} Tř. Tomáše Bati 123, Zlín</li>
 

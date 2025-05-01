@@ -1,13 +1,10 @@
 <x-mail::message>
 # Nová zpráva z kontaktního formuláře
 
-**Jméno:** {{ $formData['name'] }}  
-**Email:** {{ $formData['email'] }}  
+**Jméno:** {{ $formData['name'] }}
+**Email:** {{ $formData['email'] }}
 @if(isset($formData['phone']))
-**Telefon:** {{ $formData['phone'] }}  
-@endif
-@if(isset($formData['website']))
-**Web:** {{ $formData['website'] }}  
+**Telefon:** {{ $formData['phone'] }}
 @endif
 
 ## Zpráva:

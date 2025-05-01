@@ -15637,6 +15637,7 @@ body.service-details {
   display: inline-block;
   position: absolute;
   left: 20px;
+  top: 0;
   border: 2px solid var(--color-white);
 }
 .icon.icon-quote i {
@@ -18345,6 +18346,9 @@ body.service-details {
 .tab-section.tab-style-one .nav-tabs li button.nav-link.active {
   background-color: var(--color-heading);
   color: var(--color-white);
+}
+.nav-link:focus {
+    color: var(--color-heading);
 }
 .tab-section.tab-style-one .nav-tabs li button.nav-link:hover {
   border: none;
