@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-footer-wrapper border-right mr--20">
                         <div class="logo">
-                            <a href="#">
+                            <a href="{{ $getHomepageUrl() }}">
                                 <img src="/assets/images/logo/logo-02.svg" alt="logo">
                             </a>
                         </div>

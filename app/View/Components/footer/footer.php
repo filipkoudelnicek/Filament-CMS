@@ -35,6 +35,11 @@ class footer extends Component
         return view('components.footer.footer');
     }
 
+    public function getHomepageUrl(): string
+    {
+        return UrlService::getHomepageUrl(app()->getLocale());
+    }
+
     public function getPageUrl(Page $page): string
     {
         return PageService::getPageUrl($page);
