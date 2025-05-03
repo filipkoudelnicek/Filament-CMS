@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    protected $defaultLocale = 'cs';
-
     public function showArticle(Request $request, $articleSlug)
     {
         $locale = $request->route('locale') ?? $this->defaultLocale;

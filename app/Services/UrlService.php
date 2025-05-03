@@ -10,19 +10,28 @@ use Spatie\Sitemap\Tags\Url;
 
 class UrlService
 {
-    protected static $defaultLocale = 'cs';
     protected static $skipSlugs = ['admin', 'livewire'];
+    
+    /**
+     * Získá výchozí jazyk
+     */
+    public static function getDefaultLocale(): string
+    {
+        return config('app.locale', 'cs');
+    }
     
     /**
      * Získání slugu z URL
      */
     public static function getSlugFromUrl(string $url, bool $getLastPart = false): ?string
     {
+        $defaultLocale = self::getDefaultLocale();
+        
         if ($url === '/') {
             return $url;
         }
 
-        if ($url === '/' . self::$defaultLocale) {
+        if ($url === '/' . $defaultLocale) {
             return '/';
         }
 
@@ -69,19 +78,13 @@ class UrlService
      */
     public static function getHomepageUrl(string $locale = null): string
     {
-        if (!$locale || $locale === self::$defaultLocale) {
+        $defaultLocale = self::getDefaultLocale();
+        
+        if (!$locale || $locale === $defaultLocale) {
             return url('/');
         }
         
         return url('/' . $locale);
-    }
-
-    /**
-     * Získá výchozí jazyk
-     */
-    public static function getDefaultLocale(): string
-    {
-        return self::$defaultLocale;
     }
 
     /**
@@ -107,11 +110,12 @@ class UrlService
     {
         $sitemap = Sitemap::create();
         $languages = self::getLanguages();
+        $defaultLocale = self::getDefaultLocale();
         
         $sitemap->add(Url::create(self::getHomepageUrl()));
         
         foreach ($languages as $language) {
-            if ($language->locale !== self::$defaultLocale) {
+            if ($language->locale !== $defaultLocale) {
                 $sitemap->add(Url::create(self::getHomepageUrl($language->locale)));
             }
         }

@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Language;
 use Illuminate\Http\Request;
-use Awcodes\Curator\Models\Media;
+use App\Services\MediaService;
 
 class PageController extends Controller
 {
-    protected $defaultLocale = 'cs';
-
     public function homepage(Request $request)
     {
         $locale = $request->route('locale') ?? $this->defaultLocale;
@@ -43,16 +41,8 @@ class PageController extends Controller
         return view('pages.' . $page->type, ['page' => $page]);
     }
     
-    /**
-     * Získá URL obrázku podle jeho ID z Curator
-     */
     public static function getMediaUrl($mediaId)
     {
-        if (!$mediaId) {
-            return null;
-        }
-        
-        $media = Media::find($mediaId);
-        return $media ? '/storage/' . $media->path : null;
+        return MediaService::getMediaUrl($mediaId);
     }
 }
