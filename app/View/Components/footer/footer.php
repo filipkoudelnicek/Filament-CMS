@@ -28,14 +28,6 @@ class Footer extends Component
         $this->latestArticles = ArticleService::getLatestArticles(2, $currentLanguage->locale);
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
-    {
-        return view('components.footer.footer');
-    }
-
     public function getHomepageUrl(): string
     {
         return UrlService::getHomepageUrl(app()->getLocale());
@@ -49,5 +41,17 @@ class Footer extends Component
     public function getArticleUrl(Article $article): string
     {
         return ArticleService::getArticleUrl($article);
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
+    {
+        return view('components.footer.footer', [
+            'getHomepageUrl' => fn () => $this->getHomepageUrl(),
+            'getPageUrl' => fn (Page $page) => $this->getPageUrl($page),
+            'getArticleUrl' => fn (Article $article) => $this->getArticleUrl($article),
+        ]);
     }
 }
