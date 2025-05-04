@@ -11216,7 +11216,7 @@ header.header-three .header-mida-area.style-two .mainmenu-nav .mainmenu > li > a
     padding: 10px 24px;
   }
 }
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 768px) {
   .tmp-header-area-start.header-one.construction-radious .language-picker {
     display: none;
   }
@@ -13848,7 +13848,7 @@ nav ul li.has-dropdown .submenu li::after {
   border: 1px solid transparent;
 }
 .service-inner:hover.financial-service-inner .content .three--dot .dot {
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
 }
 
 .single-services .services-inner .thumbnail.thumbnail-rounded.border-top-left {
@@ -20998,4 +20998,20 @@ body.loaded {
 
 .collapse{
   visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .tmp-side-collups-area {
+    display: none!important;
+  }
+}
+
+#side-hide .language-picker .language-picker button{
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .banner-one-main-wrapper .inner{
+    margin: 0 auto;
+  }
 }
