@@ -5,7 +5,7 @@
                 <div class="main-header-one-wrapper">
                     <div class="tmp-nav-area-one header--sticky">
                         <div class="logo-md-sm-device">
-                            <a href="{{ $getHomepageUrl() }}" class="logo">
+                            <a href="{{ getHomepageUrl() }}" class="logo">
                                 <img src="/assets/images/logo/logo-01.svg" alt="corporate_business-logo">
                             </a>
                         </div>
@@ -15,7 +15,7 @@
                                 <ul class="parent-nav">
                                     @foreach($menuPages as $page)
                                         <li>
-                                            <a class="nav-link" href="{{ $getPageUrl($page) }}">
+                                            <a class="nav-link" href="{{ getPageUrl($page) }}">
                                                 <span>{{ $page->in_menu_title ?? $page->title }}</span>
                                             </a>
                                         </li>
