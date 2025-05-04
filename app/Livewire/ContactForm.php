@@ -25,7 +25,7 @@ class ContactForm extends Component
         $validatedData = $this->validate();
 
         try {
-            $recipient = config('mail.from.address');
+            $recipient = env('CONTACT_FORM_RECIPIENT');
 
             $mail = new ContactFormMail($validatedData);
 
