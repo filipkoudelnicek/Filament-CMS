@@ -20995,3 +20995,7 @@ body.loaded {
 .footer-main .thumbnail img{
   max-height: 80px;
 }
+
+.collapse{
+  visibility: visible;
+}
