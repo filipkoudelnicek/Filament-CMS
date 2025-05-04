@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Page;
+use Illuminate\Support\Facades\Schema;
 
 class PageService
 {
@@ -11,6 +12,10 @@ class PageService
      */
     public static function getSamePageInDiffLang(string $currentUrl, string $targetLocale): ?Page
     {
+        if (!Schema::hasTable('pages')) {
+            return null;
+        }
+        
         $slug = UrlService::getSlugFromUrl($currentUrl);
         
         if (!$slug) {
@@ -38,6 +43,21 @@ class PageService
     }
     
     /**
+     * Získá homepage pro daný jazyk
+     */
+    public static function getHomepageForLocale(string $locale)
+    {
+        if (!Schema::hasTable('pages')) {
+            return null;
+        }
+        
+        return Page::where('type', 'homepage')
+            ->where('lang_locale', $locale)
+            ->where('active', true)
+            ->first();
+    }
+    
+    /**
      * Získá slug pro blog stránku v daném jazyce
      */
     public static function getBlogSlug(string $locale = null): string
@@ -54,6 +74,10 @@ class PageService
      */
     public static function getBlogPage(string $locale = null): ?Page
     {
+        if (!Schema::hasTable('pages')) {
+            return null;
+        }
+        
         $locale = $locale ?? UrlService::getDefaultLocale();
         
         return Page::where('type', 'blog')
@@ -70,7 +94,7 @@ class PageService
         if ($page->type === 'homepage') {
             return UrlService::getHomepageUrl($page->lang_locale);
         }
-
+        
         if ($page->lang_locale === UrlService::getDefaultLocale()) {
             return url('/' . $page->slug);
         }
@@ -83,7 +107,15 @@ class PageService
      */
     public static function getActivePages()
     {
-        return Page::where('active', true)->get();
+        if (!Schema::hasTable('pages')) {
+            return collect([]);
+        }
+        
+        try {
+            return Page::where('active', true)->get();
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
 
     /**
@@ -91,20 +123,17 @@ class PageService
      */
     public static function getHomepages()
     {
-        return Page::where('type', 'homepage')
-            ->where('active', true)
-            ->get();
-    }
-    
-    /**
-     * Získá homepage pro daný jazyk
-     */
-    public static function getHomepageForLocale(string $locale)
-    {
-        return Page::where('type', 'homepage')
-            ->where('lang_locale', $locale)
-            ->where('active', true)
-            ->first();
+        if (!Schema::hasTable('pages')) {
+            return collect([]);
+        }
+        
+        try {
+            return Page::where('type', 'homepage')
+                ->where('active', true)
+                ->get();
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
     
     /**
@@ -112,12 +141,20 @@ class PageService
      */
     public static function getMenuPages(string $locale = null)
     {
+        if (!Schema::hasTable('pages')) {
+            return collect([]);
+        }
+        
         $locale = $locale ?? app()->getLocale();
         
-        return Page::where('active', 1)
-            ->where('in_menu', 1)
-            ->where('lang_locale', $locale)
-            ->orderBy('in_menu_order', 'asc')
-            ->get();
+        try {
+            return Page::where('active', 1)
+                ->where('in_menu', 1)
+                ->where('lang_locale', $locale)
+                ->orderBy('in_menu_order', 'asc')
+                ->get();
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
 }

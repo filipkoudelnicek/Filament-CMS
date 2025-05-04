@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Article;
 use App\Services\LanguageService;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Schema;
 
 class ArticleService
 {
@@ -27,7 +28,15 @@ class ArticleService
      */
     public static function getActiveArticles()
     {
-        return Article::where('active', true)->get();
+        if (!Schema::hasTable('articles')) {
+            return collect([]);
+        }
+        
+        try {
+            return Article::where('active', true)->get();
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
     
     /**
@@ -35,9 +44,17 @@ class ArticleService
      */
     public static function getArticlesByLocale(string $locale)
     {
-        return Article::where('lang_locale', $locale)
-            ->where('active', true)
-            ->get();
+        if (!Schema::hasTable('articles')) {
+            return collect([]);
+        }
+        
+        try {
+            return Article::where('lang_locale', $locale)
+                ->where('active', true)
+                ->get();
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
     
     /**
@@ -45,18 +62,26 @@ class ArticleService
      */
     public static function getLatestArticles(int $limit = 2, string $locale = null)
     {
-        $query = Article::where('active', true)
-            ->where(function ($query) {
-                $query->whereNull('publish_time')
-                    ->orWhere('publish_time', '<=', Carbon::now());
-            })
-            ->orderBy('created_at', 'desc');
-            
-        if ($locale) {
-            $query->where('lang_locale', $locale);
+        if (!Schema::hasTable('articles')) {
+            return collect([]);
         }
         
-        return $query->limit($limit)->get();
+        try {
+            $query = Article::where('active', true)
+                ->where(function ($query) {
+                    $query->whereNull('publish_time')
+                        ->orWhere('publish_time', '<=', Carbon::now());
+                })
+                ->orderBy('created_at', 'desc');
+                
+            if ($locale) {
+                $query->where('lang_locale', $locale);
+            }
+            
+            return $query->limit($limit)->get();
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
     
     /**
@@ -64,15 +89,27 @@ class ArticleService
      */
     public static function getPaginatedActiveArticlesInCurrentLanguage(int $perPage = 6)
     {
-        $currentLanguage = LanguageService::getCurrentLanguage();
+        if (!Schema::hasTable('articles')) {
+            return collect([]);
+        }
         
-        return Article::where('active', true)
-                    ->where('lang_locale', $currentLanguage->locale)
-                    ->where(function ($query) {
-                        $query->whereNull('publish_time')
-                            ->orWhere('publish_time', '<=', Carbon::now());
-                    })
-                    ->latest()
-                    ->paginate($perPage);
+        try {
+            $currentLanguage = LanguageService::getCurrentLanguage();
+            
+            if (!$currentLanguage) {
+                return collect([]);
+            }
+            
+            return Article::where('active', true)
+                ->where('lang_locale', $currentLanguage->locale)
+                ->where(function ($query) {
+                    $query->whereNull('publish_time')
+                        ->orWhere('publish_time', '<=', Carbon::now());
+                })
+                ->latest()
+                ->paginate($perPage);
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
 }

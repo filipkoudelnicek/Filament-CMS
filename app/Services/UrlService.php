@@ -7,6 +7,8 @@ use App\Models\Article;
 use App\Models\Language;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class UrlService
 {
@@ -70,7 +72,14 @@ class UrlService
      */
     public static function getLanguages()
     {
-        return Language::where('active', true)->get();
+        try {
+            if (Schema::hasTable('languages')) {
+                return Language::where('active', true)->get();
+            }
+            return collect([]);
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
 
     /**
@@ -92,7 +101,14 @@ class UrlService
      */
     public static function getLocales(): array
     {
-        return self::getLanguages()->pluck('locale')->toArray();
+        try {
+            if (Schema::hasTable('languages')) {
+                return self::getLanguages()->pluck('locale')->toArray();
+            }
+            return [self::getDefaultLocale()];
+        } catch (\Exception $e) {
+            return [self::getDefaultLocale()];
+        }
     }
 
     /**
@@ -108,31 +124,39 @@ class UrlService
      */
     public static function generateSitemap(): string
     {
-        $sitemap = Sitemap::create();
-        $languages = self::getLanguages();
-        $defaultLocale = self::getDefaultLocale();
-        
-        $sitemap->add(Url::create(self::getHomepageUrl()));
-        
-        foreach ($languages as $language) {
-            if ($language->locale !== $defaultLocale) {
-                $sitemap->add(Url::create(self::getHomepageUrl($language->locale)));
+        try {
+            if (!Schema::hasTable('languages') || !Schema::hasTable('pages') || !Schema::hasTable('articles')) {
+                return "Některé z potřebných tabulek (languages, pages, articles) ještě neexistují. Sitemap nebyl vygenerován.";
             }
+
+            $sitemap = Sitemap::create();
+            $languages = self::getLanguages();
+            $defaultLocale = self::getDefaultLocale();
+            
+            $sitemap->add(Url::create(self::getHomepageUrl()));
+            
+            foreach ($languages as $language) {
+                if ($language->locale !== $defaultLocale) {
+                    $sitemap->add(Url::create(self::getHomepageUrl($language->locale)));
+                }
+            }
+            
+            PageService::getActivePages()
+                ->each(function ($page) use ($sitemap) {
+                    if ($page->type === 'homepage') return;
+                    
+                    $sitemap->add(Url::create(PageService::getPageUrl($page)));
+                });
+            
+            ArticleService::getActiveArticles()
+                ->each(function ($article) use ($sitemap) {
+                    $sitemap->add(Url::create(ArticleService::getArticleUrl($article)));
+                });
+            
+            $sitemap->writeToFile(public_path('sitemap.xml'));
+            return "Sitemap vygenerován!";
+        } catch (\Exception $e) {
+            return "Chyba při generování sitemap: " . $e->getMessage();
         }
-        
-        PageService::getActivePages()
-            ->each(function ($page) use ($sitemap) {
-                if ($page->type === 'homepage') return;
-                
-                $sitemap->add(Url::create(PageService::getPageUrl($page)));
-            });
-        
-        ArticleService::getActiveArticles()
-            ->each(function ($article) use ($sitemap) {
-                $sitemap->add(Url::create(ArticleService::getArticleUrl($article)));
-            });
-        
-        $sitemap->writeToFile(public_path('sitemap.xml'));
-        return "Sitemap vygenerován!";
     }
 }

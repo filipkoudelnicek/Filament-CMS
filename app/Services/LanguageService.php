@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Language;
+use Illuminate\Support\Facades\Schema;
 
 class LanguageService
 {
@@ -51,7 +52,15 @@ class LanguageService
      */
     public static function getActiveLanguages()
     {
-        return Language::where('active', true)->get();
+        if (!Schema::hasTable('languages')) {
+            return collect([]);
+        }
+        
+        try {
+            return Language::where('active', true)->get();
+        } catch (\Exception $e) {
+            return collect([]);
+        }
     }
 
     /**
@@ -59,7 +68,15 @@ class LanguageService
      */
     public static function getCurrentLanguage()
     {
-        $locale = app()->getLocale();
-        return Language::where('locale', $locale)->first();
+        if (!Schema::hasTable('languages')) {
+            return null;
+        }
+        
+        try {
+            $locale = app()->getLocale();
+            return Language::where('locale', $locale)->first();
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }
