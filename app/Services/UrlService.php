@@ -19,7 +19,7 @@ class UrlService
      */
     public static function getDefaultLocale(): string
     {
-        return config('app.locale', 'cs');
+        return 'cs';
     }
     
     /**

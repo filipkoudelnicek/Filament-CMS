@@ -44,7 +44,7 @@ class PageController extends Controller
     public function show(Request $request, $slug)
     {
         if (!Schema::hasTable('pages')) {
-            return redirect('/admin');
+            abort(404);
         }
         
         $locale = $request->route('locale') ?? $this->defaultLocale;
@@ -61,7 +61,7 @@ class PageController extends Controller
             
             return view('pages.' . $page->type, ['page' => $page]);
         } catch (\Exception $e) {
-            return redirect('/admin');
+            abort(404);
         }
     }
     

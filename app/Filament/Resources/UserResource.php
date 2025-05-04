@@ -33,6 +33,7 @@ class UserResource extends Resource
                 TextInput::make('email')->label('Email')
                     ->required()
                     ->email()->unique(ignoreRecord: true),
+                TextInput::make('password')->required()->password()->hiddenOn('edit'),
                 Select::make('role')->label('Role')
                     ->relationship('roles', 'name')
                     ->preload()

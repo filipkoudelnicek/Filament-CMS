@@ -91,11 +91,13 @@ class PageService
      */
     public static function getPageUrl(Page $page): string
     {
+        $defaultLocale = UrlService::getDefaultLocale();
+        
         if ($page->type === 'homepage') {
             return UrlService::getHomepageUrl($page->lang_locale);
         }
         
-        if ($page->lang_locale === UrlService::getDefaultLocale()) {
+        if ($page->lang_locale === $defaultLocale) {
             return url('/' . $page->slug);
         }
         

@@ -18,32 +18,12 @@ class LanguageService
             $wantedPage = PageService::getSamePageInDiffLang($currentUrl, $locale);
             
             if ($wantedPage) {
-                if ($wantedPage->slug == '/') {
-                    if ($locale == UrlService::getDefaultLocale()) {
-                        return '/';
-                    } else {
-                        return '/' . $locale;
-                    }
-                } else {
-                    if ($wantedPage->lang_locale == UrlService::getDefaultLocale()) {
-                        return '/' . $wantedPage->slug;
-                    } else {
-                        return '/' . $wantedPage->lang_locale . '/' . $wantedPage->slug;
-                    }
-                }
+                return PageService::getPageUrl($wantedPage);
             } else {
-                if ($locale == UrlService::getDefaultLocale()) {
-                    return '/';
-                } else {
-                    return '/' . $locale;
-                }
+                return UrlService::getHomepageUrl($locale);
             }
         } catch (\Exception $e) {
-            if ($locale == UrlService::getDefaultLocale()) {
-                return '/';
-            } else {
-                return '/' . $locale;
-            }
+            return UrlService::getHomepageUrl($locale);
         }
     }
 

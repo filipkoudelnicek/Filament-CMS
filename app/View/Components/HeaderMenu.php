@@ -11,6 +11,7 @@ use App\Services\PageService;
 class HeaderMenu extends Component
 {
     public $menuPages;
+    public $currentLocale;
     
     /**
      * Create a new component instance.
@@ -19,17 +20,38 @@ class HeaderMenu extends Component
      */
     public function __construct()
     {
-        $this->menuPages = PageService::getMenuPages();
+        $this->currentLocale = app()->getLocale();
+        $this->menuPages = PageService::getMenuPages($this->currentLocale);
     }
 
     public function getHomepageUrl(): string
     {
-        return UrlService::getHomepageUrl(app()->getLocale());
+        $defaultLocale = UrlService::getDefaultLocale();
+        
+        if ($this->currentLocale === $defaultLocale) {
+            return url('/');
+        }
+        
+        return url('/' . $this->currentLocale);
     }
     
     public function getPageUrl($page): string
     {
-        return PageService::getPageUrl($page);
+        $defaultLocale = UrlService::getDefaultLocale();
+                
+        if ($page->type === 'homepage') {
+            if ($this->currentLocale === $defaultLocale) {
+                return url('/');
+            } else {
+                return url('/' . $this->currentLocale);
+            }
+        }
+        
+        if ($this->currentLocale === $defaultLocale) {
+            return url('/' . $page->slug);
+        } else {
+            return url('/' . $this->currentLocale . '/' . $page->slug);
+        }
     }
 
     /**
