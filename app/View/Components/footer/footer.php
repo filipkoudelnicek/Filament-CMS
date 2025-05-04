@@ -12,7 +12,7 @@ use App\Services\LanguageService;
 use App\Models\Article;
 use App\Services\UrlService;
 
-class footer extends Component
+class Footer extends Component
 {
     public $menuPages;
     public $latestArticles;

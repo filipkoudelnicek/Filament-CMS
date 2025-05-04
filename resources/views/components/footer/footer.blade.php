@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-footer-wrapper border-right mr--20">
                         <div class="logo">
-                            <a href="{{ getHomepageUrl() }}">
+                            <a href="{{ $this->getHomepageUrl() }}">
                                 <img src="/assets/images/logo/logo-02.svg" alt="logo">
                             </a>
                         </div>
@@ -37,7 +37,7 @@
                         <ul class="ft-link">
                             @foreach($menuPages as $page)
                                 <li>
-                                    <a href="{{ getPageUrl($page) }}">
+                                    <a href="{{ $this->getPageUrl($page) }}">
                                         {{ $page->in_menu_title ?? $page->title }}
                                     </a>
                                 </li>
@@ -61,7 +61,7 @@
                                 <div class="content">
                                     <div class="date"><i class="fa-light fa-calendar-days"></i><span>{{ $post->publish_time?->format('d M, Y') }}</span></div>
 
-                                    <a href="{{ getArticleUrl($post) }}">
+                                    <a href="{{ $this->getArticleUrl($post) }}">
                                         <h6 class="title">{{ $post->title }}</h6>
                                     </a>
                                 </div>
