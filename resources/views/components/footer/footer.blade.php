@@ -59,7 +59,7 @@
                                     @endisset
                                 </div>
                                 <div class="content">
-                                    <div class="date"><i class="fa-light fa-calendar-days"></i><span>{{ $post->publish_time?->format('d M, Y') }}</span></div>
+                                    <div class="date"><i class="fa-light fa-calendar-days"></i><span>{{ $post->publish_time?->format('d.n. Y') }}</span></div>
 
                                     <a href="{{ $getArticleUrl($post) }}">
                                         <h6 class="title">{{ $post->title }}</h6>

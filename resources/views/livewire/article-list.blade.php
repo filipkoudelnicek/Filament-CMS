@@ -14,7 +14,7 @@
                             </div>
                             <div class="blog-content text-center">
                                 <div class="blog-head">
-                                    <span class="name">{{ $article->publish_time?->format('j.n.Y') }}</span>
+                                    <span class="name">{{ $article->publish_time?->format('j.n. Y') }}</span>
                                     <span class="designation">{{ $article->user->name }}</span>
                                 </div>
                                 <div class="blog-body">
