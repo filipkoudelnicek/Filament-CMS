@@ -39,7 +39,7 @@ class HeaderMenu extends Component
      */
     public function render()
     {
-        return view('components.header-menu', [
+        return view('components.header.header-menu', [
             'menuPages' => $this->menuPages,
             'getHomepageUrl' => fn () => $this->getHomepageUrl(),
             'getPageUrl' => fn ($page) => $this->getPageUrl($page),
