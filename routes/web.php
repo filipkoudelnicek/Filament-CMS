@@ -18,7 +18,7 @@ if ($languages->isEmpty() && Schema::hasTable('migrations')) {
         return redirect('/admin');
     });
     Route::fallback(function () {
-        return redirect('/admin');
+        abort(404);
     });
 } else {
     Route::get('/', [PageController::class, 'homepage'])
@@ -53,4 +53,8 @@ if ($languages->isEmpty() && Schema::hasTable('migrations')) {
                 ->name($language->locale . '.page.show');
         }
     }
+
+    Route::fallback(function () {
+        abort(404);
+    });
 }
