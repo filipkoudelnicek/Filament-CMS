@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\header;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -39,7 +39,8 @@ class HeaderMenu extends Component
      */
     public function render()
     {
-        return view('components.header.header-menu', [
+        return view('components.header-menu', [
+            'menuPages' => $this->menuPages,
             'getHomepageUrl' => fn () => $this->getHomepageUrl(),
             'getPageUrl' => fn ($page) => $this->getPageUrl($page),
         ]);

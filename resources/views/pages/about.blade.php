@@ -3,7 +3,7 @@
 @section('seo')<x-seo-module :seo="$page->content['seo'] ?? []" />@endsection
 
 @section('content')
-    <x-header.page-header :title="$page->title" />
+    <x-page-header :title="$page->title" />
 
     <div class="about-area tmp-section-gap about-style-one">
         <div class="container">

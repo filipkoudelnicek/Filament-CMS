@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\header;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -34,6 +34,6 @@ class PageHeader extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.header.page-header');
+        return view('components.page-header');
     }
 }

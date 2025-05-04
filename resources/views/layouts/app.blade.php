@@ -26,11 +26,11 @@
 </head>
 
 <body class="index-one">
-    <x-header.header-menu />
+    <x-header-menu />
 
     @yield('content')
 
-    <x-footer.footer />
+    <x-footer />
 
     @vite('resources/js/app.js')
     <script src="/assets/js/vendor/jquery.js"></script>

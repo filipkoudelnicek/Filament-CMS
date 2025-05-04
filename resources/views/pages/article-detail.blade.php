@@ -3,7 +3,7 @@
 @section('seo')<x-seo-module :seo="$article->content['seo'] ?? []" />@endsection
 
 @section('content')
-    <x-header.page-header :title="$article->title" :background="$article->content['banner']" :author="$article->user->name" :publishedAt="$article->publish_time?->format('j.n.Y')"/>
+    <x-page-header :title="$article->title" :background="$article->content['banner']" :author="$article->user->name" :publishedAt="$article->publish_time?->format('j.n.Y')"/>
 
     <div class="tmp-service-section tmp-section-gap article-detail">
         <div class="container">
