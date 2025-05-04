@@ -1,10 +1,12 @@
 <?php
 
-namespace App\View\Components\Header;
+namespace App\View\Components\header;
 
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 use App\Services\UrlService;
 use App\Services\PageService;
-use Illuminate\View\Component;
 
 class HeaderMenu extends Component
 {
