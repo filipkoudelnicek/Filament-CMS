@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="blog-body">
                                     <a href="{{ $this->getArticleUrl($article) }}" class="title-area">
-                                        <h4 class="title">{{ $article->title }}</h4>
+                                        <h2 class="title">{{ $article->title }}</h2>
                                     </a>
                                     <a class="btn-read-more" href="{{ $this->getArticleUrl($article) }}">
                                         <span class="read-more-text">{{ __('Číst více') }}</span>

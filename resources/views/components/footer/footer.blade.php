@@ -24,16 +24,16 @@
                         </div>
 
                         <ul class="social-icons solid-social-icons rounded-social-icons">
-                            <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li><a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                            <li><a href="https://x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                            <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            <li><a href="https://x.com" target="_blank" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="single-footer-wrapper pl-50 pl_md--0 pl_sm--0">
-                        <h5 class="ft-title">{{ __('Menu') }}</h5>
+                        <span class="ft-title">{{ __('Menu') }}</span>
                         <ul class="ft-link">
                             @foreach($menuPages as $page)
                                 <li>
@@ -49,7 +49,7 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper pr--15">
-                        <h5 class="ft-title">{{ __('Poslední příspěvky') }}</h5>
+                        <span class="ft-title">{{ __('Poslední příspěvky') }}</span>
 
                         @foreach($latestArticles as $post)
                             <div class="single-post">
@@ -62,7 +62,7 @@
                                     <div class="date"><i class="fa-light fa-calendar-days"></i><span>{{ $post->publish_time?->format('d.n. Y') }}</span></div>
 
                                     <a href="{{ $getArticleUrl($post) }}">
-                                        <h6 class="title">{{ $post->title }}</h6>
+                                        <h5 class="title">{{ $post->title }}</h5>
                                     </a>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">
-                        <h5 class="ft-title">{{ __('Kontaktní údaje') }}:</h5>
+                        <span class="ft-title">{{ __('Kontaktní údaje') }}:</span>
                         <ul class="ft-link">
                             <li class="ft-location">{{ __('Česká republika') }} Tř. Tomáše Bati 123, Zlín</li>
 

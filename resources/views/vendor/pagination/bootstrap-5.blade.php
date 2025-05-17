@@ -3,10 +3,10 @@
         
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            <button disabled><i class="fa-regular fa-chevron-left"></i></button>
+            <button disabled aria-label="Předchozí stránka"><i class="fa-regular fa-chevron-left"></i></button>
         @else
-            <a href="{{ $paginator->previousPageUrl() }}">
-                <button><i class="fa-regular fa-chevron-left"></i></button>
+            <a href="{{ $paginator->previousPageUrl() }}" aria-label="Předchozí stránka">
+                <button aria-label="Předchozí stránka"><i class="fa-regular fa-chevron-left"></i></button>
             </a>
         @endif
 
@@ -35,11 +35,11 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->nextPageUrl() }}">
-                <button><i class="fa-sharp fa-regular fa-chevron-right"></i></button>
+            <a href="{{ $paginator->nextPageUrl() }}" aria-label="Další stránka">
+                <button aria-label="Další stránka"><i class="fa-sharp fa-regular fa-chevron-right"></i></button>
             </a>
         @else
-            <button disabled><i class="fa-sharp fa-regular fa-chevron-right"></i></button>
+            <button disabled aria-label="Další stránka"><i class="fa-sharp fa-regular fa-chevron-right"></i></button>
         @endif
 
     </div>

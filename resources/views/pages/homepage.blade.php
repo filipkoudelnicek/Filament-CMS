@@ -112,9 +112,9 @@
 
                         <div class="work-done">
                             @isset($page->content['aboutNumber'])
-                                <h3 class="title">
+                                <span class="title">
                                     <span class="counter">{{ $page->content['aboutNumber'] }}</span>+
-                                </h3>
+                                </span>
                             @endisset
 
                             @isset($page->content['aboutNumberText'])
@@ -293,7 +293,7 @@
                                 </div>
 
                                 @isset($numberItem['text'])
-                                    <h5 class="counter-title">{{ $numberItem['text'] }}</h5>
+                                    <p class="counter-title">{{ $numberItem['text'] }}</p>
                                 @endisset
                             </div>
                         </div>
@@ -349,7 +349,7 @@
 
                                     <div class="services-content services-content-style-1 text-center">
                                         @isset($process['title'])
-                                            <h5 class="title">{{ $process['title'] }}</h5>
+                                            <p class="title">{{ $process['title'] }}</p>
                                         @endisset
 
                                         @isset($process['text'])
@@ -405,7 +405,7 @@
 
                                                 <div class="inner-content">
                                                     @isset($portfolioItem['title'])
-                                                        <h5 class="title">{{ $portfolioItem['title'] }}</h5>
+                                                        <p class="title">{{ $portfolioItem['title'] }}</p>
                                                     @endisset
 
                                                     @isset($portfolioItem['text'])
@@ -503,7 +503,7 @@
 
                         <div class="faq-buttom">
                             @isset($page->content['faqMoreQuestions'])
-                                <h4 class="title">{{ $page->content['faqMoreQuestions'] }}</h4>
+                                <p class="title">{{ $page->content['faqMoreQuestions'] }}</p>
                             @endisset
 
                             @isset($page->content['faqContact'])

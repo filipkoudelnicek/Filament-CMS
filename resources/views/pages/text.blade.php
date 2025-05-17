@@ -5,5 +5,7 @@
 @section('content')
     <x-page-header :title="$page->title" />
     
-    <h1>Tohle je text stránka</h1>
+    @isset($page->content['text'])
+        {!! $page->content['text'] !!}
+    @endisset
 @endsection

@@ -26,7 +26,7 @@
 
                         <div class="blog-body">
                             <a href="{{ $this->getArticleUrl($post) }}" class="title-area">
-                                <h4 class="title">{{ $post->title }}</h4>
+                                <h3 class="title">{{ $post->title }}</h3>
                             </a>
 
                             @isset($post->content['body'])

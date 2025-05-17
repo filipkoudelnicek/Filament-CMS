@@ -19,9 +19,9 @@
 
                         <div class="work-done">
                             @isset($page->content['aboutNumber'])
-                                <h3 class="title">
+                                <span class="title">
                                     <span class="counter">{{ $page->content['aboutNumber'] }}</span>+
-                                </h3>
+                                </span>
                             @endisset
 
                             @isset($page->content['aboutNumberText'])
@@ -147,7 +147,7 @@
 
                                     <div class="services-content services-content-style-1 text-center">
                                         @isset($process['title'])
-                                            <h5 class="title">{{ $process['title'] }}</h5>
+                                            <p class="title">{{ $process['title'] }}</p>
                                         @endisset
 
                                         @isset($process['text'])

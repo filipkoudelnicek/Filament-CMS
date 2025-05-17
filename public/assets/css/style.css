@@ -13368,8 +13368,8 @@ nav ul li.has-dropdown .submenu li::after {
   bottom: 50px;
 }
 .tmp-banner-swiper-one-area.construction-2 .swiper-pagination .swiper-pagination-bullet {
-  height: 15px;
-  width: 15px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
   background: var(--color-primary);
 }
@@ -13593,6 +13593,8 @@ nav ul li.has-dropdown .submenu li::after {
   line-height: 45px;
   margin-top: 37px;
   margin-bottom: 0;
+  font-family: var(--font-secondary);
+  color: var(--color-heading);
 }
 .services-content.services-content-style-1 .description {
   font-size: var(--font-size-b1);
@@ -13824,6 +13826,7 @@ nav ul li.has-dropdown .submenu li::after {
 .service-inner.financial-service-inner .icon img {
   height: 60px;
   width: 60px;
+  object-fit: contain;
 }
 .service-inner.financial-service-inner .content {
   text-align: center;
@@ -15113,6 +15116,7 @@ img {
   line-height: 31px;
   font-weight: var(--s-regular);
   margin: 0;
+  font-family: var(--font-secondary);
 }
 .faq-buttom p {
   font-size: 16px;
@@ -15121,8 +15125,8 @@ img {
   font-weight: var(--s-regular);
 }
 .faq-buttom p a {
-  color: var(--color-primary);
-  font-weight: var(--s-regular);
+  color: #FF1C2C;
+  font-weight: var(--s-bold);
   font-family: var(--font-secondary);
 }
 
@@ -15244,6 +15248,16 @@ body.service-details {
 }
 .mySwiper-portfolio-1 .signle-product-start::after {
   transition: 0.3s !important;
+}
+.signle-product-start .title{
+  font-size: var(--h5);
+  line-height: 1.24;
+  color: var(--color-heading);
+  margin: 0;
+  margin-bottom: 20px;
+  font-family: var(--font-secondary);
+  word-break: break-word;
+  font-weight: var(--s-bold);
 }
 .mySwiper-portfolio-1 .signle-product-start:hover .inner-content {
   bottom: 30px;
@@ -15457,6 +15471,7 @@ body.service-details {
   font-weight: var(--s-bold);
   color: var(--color-heading);
   line-height: 40px;
+  font-family: var(--font-secondary);
 }
 .single-team .content .designation {
   color: var(--color-body);
@@ -17145,8 +17160,8 @@ body.service-details {
   bottom: 50px;
 }
 .tmp-banner-swiper-one-area.construction-2 .swiper-pagination .swiper-pagination-bullet {
-  height: 15px;
-  width: 15px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
   background: var(--color-primary);
 }
@@ -17915,6 +17930,7 @@ body.service-details {
   font-weight: 400;
   font-size: 24px;
   color: var(--color-body);
+  font-family: var(--font-secondary);
 }
 .counter-style-4 .title {
   font-size: 55px;
@@ -20439,6 +20455,8 @@ body.loaded {
   color: #fff;
   font-size: 60px;
   margin-bottom: 0;
+  font-weight: var(--s-bold);
+  line-height: 1.14;
 }
 .about-thumbnail-construction .work-done p {
   color: #fff;
@@ -20723,6 +20741,11 @@ body.loaded {
   color: #fff;
 }
 .copyright-area-one p a {
+  color: var(--color-white);
+  font-weight: var(--s-bold);
+}
+
+.copyright-area-one p a:hover {
   color: var(--color-primary);
 }
 
@@ -20764,6 +20787,11 @@ body.loaded {
 .single-footer-wrapper .ft-title {
   color: var(--color-white);
   margin-bottom: 30px;
+  word-break: break-word;
+  font-family: var(--font-secondary);
+  font-size: var(--h5);
+  line-height: 1.24;
+  font-weight: var(--s-bold);
 }
 .single-footer-wrapper .single-post {
   display: flex;

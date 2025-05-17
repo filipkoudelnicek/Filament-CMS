@@ -96,11 +96,4 @@
             </div>
         </div>
     </div>
-
-    <div class="tmp-map-area tmp-sectiongapBottom">
-        <div class="map-area-flotimg-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83372.61742071428!2d17.59410698629843!3d49.231013196691556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47130cad4c888e0d%3A0x418d4c16a8ac214f!2zWmzDrW4!5e0!3m2!1scs!2scz!4v1745779583581!5m2!1scs!2scz" width="600" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
-
 @endsection

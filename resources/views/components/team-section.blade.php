@@ -10,17 +10,17 @@
             data-sal-duration="800"
         >
             <div class="single-team">
-                <a class="thumbnail">
+                <div class="thumbnail">
                     @isset($member->content['photo'])
                         <x-curator-glider :media="$member->content['photo']" />
                     @endisset
-                </a>
+                </div>
 
                 <div class="content">
                     <div class="team-name content-with-bg">
-                        <a class="name-area">
-                            <h6 class="name">{{ $member->name }}</h6>
-                        </a>
+                        <div class="name-area">
+                            <p class="name">{{ $member->name }}</p>
+                        </div>
                         <div class="designation">{{ $member->position }}</div>
                     </div>
 
@@ -28,13 +28,13 @@
                         <div class="share-icon-style-one">
                             <ul class="social-icons social-icons-with-bg">
                                 @isset($member->content['facebook'])
-                                    <li><a href="{{ $member->content['facebook'] }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ $member->content['facebook'] }}" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
                                 @endisset
                                 @isset($member->content['linkedin'])
-                                    <li><a href="{{ $member->content['linkedin'] }}" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                    <li><a href="{{ $member->content['linkedin'] }}" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
                                 @endisset
                                 @isset($member->content['twitter'])
-                                    <li><a href="{{ $member->content['twitter'] }}" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                                    <li><a href="{{ $member->content['twitter'] }}" target="_blank" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
                                 @endisset
                             </ul>
                             <i class="fa-sharp fa-solid fa-share-nodes"></i>
