@@ -12152,9 +12152,9 @@ nav ul li.has-dropdown .submenu li::after {
   opacity: 1;
 }
 .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner h1.title {
-  animation: fadeInUp2 1s linear;
+  /*animation: fadeInUp2 1s linear;
   animation-delay: 0.8s;
-  opacity: 1;
+  opacity: 1;*/
 }
 .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner p.disc {
   animation: fadeInUp2 1.3s linear;
@@ -12291,8 +12291,8 @@ nav ul li.has-dropdown .submenu li::after {
   font-size: 60px;
   line-height: 75px;
   margin-bottom: 22px;
-  transition-delay: 1s;
-  opacity: 0;
+  /*transition-delay: 1s;
+  opacity: 0;*/
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner-one-main-wrapper .inner .title {
@@ -15944,9 +15944,9 @@ body.service-details {
   opacity: 1;
 }
 .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner h1.title {
-  animation: fadeInUp2 1s linear;
+  /*animation: fadeInUp2 1s linear;
   animation-delay: 0.8s;
-  opacity: 1;
+  opacity: 1;*/
 }
 .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner p.disc {
   animation: fadeInUp2 1.3s linear;
@@ -15961,6 +15961,17 @@ body.service-details {
 @media only screen and (max-width: 767px) {
   .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner p.disc {
     max-width: 100%;
+  }
+
+  .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .shape-image-banner-one .one,
+  .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .shape-image-banner-one .two,
+  .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .shape-image-banner-one .three,
+  .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner span.sub-title,
+  .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner p.disc,
+  .tmp-banner-swiper-one-area .swiper-slide-active .tmp-banner-area .inner .button-area-banner-one {
+    animation: unset!important;
+    animation-delay: unset!important;
+    transition-delay: unset!important;
   }
 }
 @media only screen and (max-width: 1199px) {
@@ -16083,8 +16094,8 @@ body.service-details {
   font-size: 60px;
   line-height: 75px;
   margin-bottom: 22px;
-  transition-delay: 1s;
-  opacity: 0;
+  /*transition-delay: 1s;
+  opacity: 0;*/
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner-one-main-wrapper .inner .title {

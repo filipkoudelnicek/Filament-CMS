@@ -13,7 +13,7 @@
                                 <div class="shape-image-banner-one">
                                     <img src="/assets/images/banner/shape/01.png" alt="Shape 1" class="one">
                                     <img src="/assets/images/banner/shape/02.png" alt="Shape 2" class="two">
-                                    <img src="/assets/images/banner/shape/03.png" alt="Shape 3" class="three">
+                                    <img src="/assets/images/banner/shape/03.png" alt="Shape 3" class="three" loading="lazy">
                                 </div>
 
                                 <div class="container">
