@@ -62,7 +62,7 @@
                                     <div class="date"><i class="fa-light fa-calendar-days"></i><span>{{ $post->publish_time?->format('d.n. Y') }}</span></div>
 
                                     <a href="{{ $getArticleUrl($post) }}">
-                                        <h5 class="title">{{ $post->title }}</h5>
+                                        <p class="title">{{ $post->title }}</p>
                                     </a>
                                 </div>
                             </div>
