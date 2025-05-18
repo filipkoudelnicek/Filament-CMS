@@ -18,4 +18,19 @@ class MediaService
         $media = Media::find($mediaId);
         return $media ? '/storage/' . $media->path : null;
     }
+
+    /**
+     * Vrátí absolutní URL obrázku podle ID
+     */
+    public static function getMediaFullUrl($mediaId): ?string
+    {
+        if (!$mediaId) {
+            return null;
+        }
+
+        $media = Media::find($mediaId);
+
+        return $media ? url('/storage/' . ltrim($media->path, '/')) : null;
+    }
+
 }

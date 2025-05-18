@@ -23,8 +23,8 @@
         <meta property="og:description" content="{{ $seo['og_desc'] }}">
     @endif
 
-    @if(!empty($seo['og_image']))
-        <meta property="og:image" content="{{ $seo['og_image'] }}">
+    @if ($ogImageUrl)
+        <meta property="og:image" content="{{ $ogImageUrl }}">
     @endif
 
     @if(!empty($seo['canonical']))

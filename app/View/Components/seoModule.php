@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Services\MediaService;
 
 class SeoModule extends Component
 {
@@ -21,6 +22,8 @@ class SeoModule extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.seo-module');
+        return view('components.seo-module')->with([
+        'ogImageUrl' => MediaService::getMediaFullUrl($this->seo['og_image'] ?? null),
+    ]);
     }
 }
