@@ -11,9 +11,9 @@
                         <div class="swiper-slide">
                             <div class="tmp-banner-area bg_image-1 bg_image banner-one-height-control construction-2 tmp-section-gap" style="background-image: url('{{ \App\Http\Controllers\PageController::getMediaUrl($slide['background_image']) }}');">
                                 <div class="shape-image-banner-one">
-                                    <img src="/assets/images/banner/shape/01.png" alt="Shape 1" class="one">
-                                    <img src="/assets/images/banner/shape/02.png" alt="Shape 2" class="two">
-                                    <img src="/assets/images/banner/shape/03.png" alt="Shape 3" class="three" loading="lazy">
+                                    <img src="/assets/images/banner/shape/01.png" alt="Shape 1" title="Decoration img" class="one">
+                                    <img src="/assets/images/banner/shape/02.png" alt="Shape 2" title="Decoration img" class="two">
+                                    <img src="/assets/images/banner/shape/03.png" alt="Shape 3" title="Decoration img" class="three" loading="lazy">
                                 </div>
 
                                 <div class="container">
@@ -26,7 +26,11 @@
                                                     @endisset
 
                                                     @isset($slide['title'])
-                                                        <h1 class="title">{{ $slide['title'] }}</h1>
+                                                        @if ($loop->first)
+                                                            <h1 class="title">{{ $slide['title'] }}</h1>
+                                                        @else
+                                                            <h2 class="title">{{ $slide['title'] }}</h2>
+                                                        @endif
                                                     @endisset
 
                                                     @isset($slide['text'])
@@ -128,7 +132,7 @@
                     <div class="about-inner">
                         <div class="section-head text-align-left section-head-one-side">
                             <div class="section-sub-title">
-                                <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                                <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service" title="Decoration img">
                                 @isset($page->content['aboutSubtitle'])
                                     <span class="subtitle">{{ $page->content['aboutSubtitle'] }}</span>
                                 @endisset
@@ -200,7 +204,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="/assets/images/services/section-custom-menubar.png" alt="Business_Consulting_services">
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Business_Consulting_services" title="Decoration img">
 
                             @isset($page->content['servicesSubtitle'])
                                 <span>{{ $page->content['servicesSubtitle'] }}</span>
@@ -261,7 +265,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service" title="Decoration img">
 
                             @isset($page->content['numbersSubtitle'])
                                 <span class="subtitle">{{ $page->content['numbersSubtitle'] }}</span>
@@ -309,7 +313,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service" title="Decoration img">
 
                             @isset($page->content['processSubtitle'])
                                 <span class="subtitle">{{ $page->content['processSubtitle'] }}</span>
@@ -374,7 +378,7 @@
                 <div class="col-lg-12">
                     <div class="section-head color-white">
                         <div class="section-sub-title center-title">
-                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service" title="Decoration img">
 
                             @isset($page->content['portfolioSubtitle'])
                                 <span class="subtitle">{{ $page->content['portfolioSubtitle'] }}</span>
@@ -436,7 +440,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service" title="Decoration img">
 
                             @isset($page->content['faqSubtitle'])
                                 <span class="subtitle">{{ $page->content['faqSubtitle'] }}</span>
@@ -527,7 +531,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="/assets/images/services/section-custom-menubar.png " alt="Corporate services">
+                            <img src="/assets/images/services/section-custom-menubar.png " alt="Corporate services" title="Decoration img">
                             @isset($page->content['teamSubtitle'])
                                 <span>{{ $page->content['teamSubtitle'] }}</span>
                             @endisset
@@ -553,7 +557,7 @@
                         <div class="testimonials-button-area">
                             <div class="section-head text-align-left">
                                 <div class="section-sub-title">
-                                    <img src="/assets/images/services/section-custom-menubar.png " alt="Corporate_service">
+                                    <img src="/assets/images/services/section-custom-menubar.png " alt="Corporate_service" title="Decoration img">
                                     @isset($page->content['referenceSubtitle'])
                                         <span class="subtitle">{{ $page->content['referenceSubtitle'] }}</span>
                                     @endisset
@@ -580,7 +584,7 @@
 
     <div class="contact-area-three tmp-section-gapTop">
         <div class="bg-shape">
-            <img src="/assets/images/cta/02.png" alt="bussiness-contact">
+            <img src="/assets/images/cta/02.png" alt="bussiness-contact" title="Decoration img">
         </div>
 
         <div class="container">
@@ -679,7 +683,7 @@
                 <div class="col-lg-12">
                     <div class="section-head">
                         <div class="section-sub-title center-title">
-                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service">
+                            <img src="/assets/images/services/section-custom-menubar.png" alt="Corporate_service" title="Decoration img">
                             @isset($page->content['blogSubtitle'])
                                 <span class="subtitle">{{ $page->content['blogSubtitle'] }}</span>
                             @endisset

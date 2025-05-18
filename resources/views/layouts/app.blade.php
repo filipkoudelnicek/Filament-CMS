@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 
 @yield('seo')
-<title>@yield('title') - Bizper</title>
+<title>@yield('title') - Kompletní stavební servis a poradenství | Bizper</title>
 </head>
 
 <body class="index-one">
